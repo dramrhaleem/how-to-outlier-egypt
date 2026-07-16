@@ -1,0 +1,4185 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>الدليل الشامل للعمل في Outlier من مصر</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================
+   CORE VARIABLES & RESET
+============================================ */
+:root {
+  --bg-base: #0A0E1A;
+  --bg-surface: #131A2E;
+  --bg-elevated: #1B2440;
+  --bg-glass: rgba(255, 255, 255, 0.03);
+  --bg-glass-strong: rgba(255, 255, 255, 0.06);
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+
+  --primary: #6366F1;
+  --primary-light: #818CF8;
+  --primary-dark: #4F46E5;
+  --accent: #06B6D4;
+  --accent-light: #22D3EE;
+  --gold: #F59E0B;
+  --gold-light: #FBBF24;
+
+  --danger: #EF4444;
+  --danger-soft: rgba(239, 68, 68, 0.1);
+  --success: #10B981;
+  --success-soft: rgba(16, 185, 129, 0.1);
+  --warning: #F59E0B;
+  --warning-soft: rgba(245, 158, 11, 0.1);
+  --info: #3B82F6;
+  --info-soft: rgba(59, 130, 246, 0.1);
+
+  --text-primary: #F1F5F9;
+  --text-secondary: #CBD5E1;
+  --text-muted: #94A3B8;
+  --text-dim: #64748B;
+
+  --font-arabic: 'Cairo', system-ui, sans-serif;
+  --font-latin: 'Inter', system-ui, sans-serif;
+  --font-quran: 'Amiri', serif;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.45);
+  --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.25);
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+body {
+  font-family: var(--font-arabic);
+  background: var(--bg-base);
+  color: var(--text-primary);
+  line-height: 1.7;
+  overflow-x: hidden;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Animated background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(6, 182, 212, 0.10) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.05) 0%, transparent 60%);
+  z-index: -2;
+  pointer-events: none;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 60px 60px;
+  z-index: -1;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 80%);
+}
+
+::selection { background: var(--primary); color: white; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary), var(--accent));
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--primary-light); }
+
+/* ============================================
+   READING PROGRESS BAR
+============================================ */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 3px;
+  background: transparent;
+  z-index: 1000;
+}
+.progress-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--primary), var(--accent), var(--gold));
+  box-shadow: 0 0 12px var(--primary);
+  transition: width 0.1s linear;
+}
+
+/* ============================================
+   NAVIGATION
+============================================ */
+.navbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
+  padding: 16px 32px;
+  background: rgba(10, 14, 26, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-subtle);
+  transition: var(--transition);
+}
+
+.nav-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.nav-brand-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-family: var(--font-latin);
+  color: white;
+  box-shadow: var(--shadow-glow);
+}
+
+.nav-menu {
+  display: flex;
+  gap: 6px;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-menu a {
+  padding: 8px 14px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.nav-menu a:hover {
+  color: var(--text-primary);
+  background: var(--bg-glass);
+}
+
+.nav-toggle {
+  display: none;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.3rem;
+}
+
+/* ============================================
+   LAYOUT HELPERS
+============================================ */
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+section {
+  padding: 100px 0;
+  position: relative;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-tag {
+  display: inline-block;
+  padding: 6px 16px;
+  background: var(--bg-glass-strong);
+  border: 1px solid var(--border-subtle);
+  border-radius: 100px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.5px;
+  margin-bottom: 18px;
+  font-family: var(--font-latin);
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.section-title .grad {
+  background: linear-gradient(135deg, var(--primary-light), var(--accent-light));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-subtitle {
+  font-size: 1.08rem;
+  color: var(--text-muted);
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* ============================================
+   HERO
+============================================ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 120px 24px 80px;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, transparent 60%);
+  animation: pulse 8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+  50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.9; }
+}
+
+.hero-content {
+  max-width: 920px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: var(--bg-glass-strong);
+  border: 1px solid var(--border-strong);
+  border-radius: 100px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 28px;
+  backdrop-filter: blur(10px);
+}
+
+.hero-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 12px var(--success);
+  animation: blink 2s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.hero-title {
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+}
+
+.hero-title .grad {
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 35%, #06B6D4 70%, #22D3EE 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  color: var(--text-secondary);
+  line-height: 1.85;
+  max-width: 760px;
+  margin: 0 auto 40px;
+}
+.hero-warning {
+  max-width: 720px;
+  margin: 0 auto 28px;
+  padding: 18px 24px;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(239, 68, 68, 0.06));
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  text-align: right;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-warning::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--warning), var(--danger));
+}
+
+.hero-warning-icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--warning), var(--gold-light));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1.1rem;
+  color: var(--bg-base);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+.hero-warning-text {
+  flex: 1;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+
+.hero-warning-text strong {
+  color: var(--gold-light);
+  display: block;
+  margin-bottom: 4px;
+  font-size: 1rem;
+}
+
+@media (max-width: 600px) {
+  .hero-warning {
+    padding: 14px 18px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .hero-warning-text { font-size: 0.88rem; }
+}
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 56px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: inherit;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.35);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(99, 102, 241, 0.5);
+}
+
+.btn-secondary {
+  background: var(--bg-glass-strong);
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+  backdrop-filter: blur(10px);
+}
+.btn-secondary:hover {
+  background: var(--bg-elevated);
+  border-color: var(--primary);
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.stat-card {
+  padding: 24px 20px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(10px);
+  transition: var(--transition);
+}
+
+.stat-card:hover {
+  background: var(--bg-glass-strong);
+  border-color: var(--primary);
+  transform: translateY(-4px);
+}
+
+.stat-number {
+  font-family: var(--font-latin);
+  font-size: 2.2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary-light), var(--accent-light));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 6px;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.hero-disclaimer {
+  margin-top: 60px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  background: var(--warning-soft);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 10px;
+  font-size: 0.85rem;
+  color: var(--warning);
+}
+
+/* ============================================
+   CARDS / GLASS PANELS
+============================================ */
+.glass-card {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  backdrop-filter: blur(20px);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card:hover {
+  background: var(--bg-glass-strong);
+  border-color: var(--border-strong);
+  transform: translateY(-4px);
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.glass-card:hover::before { opacity: 1; }
+
+/* ============================================
+   INTRO SECTION (What is RLHF / Outlier)
+============================================ */
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-bottom: 50px;
+}
+
+.intro-card {
+  background: linear-gradient(145deg, var(--bg-surface), var(--bg-elevated));
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.intro-card-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  font-family: var(--font-latin);
+  color: white;
+}
+
+.intro-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: var(--text-primary);
+}
+
+.intro-card p {
+  color: var(--text-secondary);
+  line-height: 1.9;
+  font-size: 0.98rem;
+}
+
+.intro-card .highlight {
+  color: var(--accent-light);
+  font-weight: 600;
+}
+
+.intro-callout {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(6, 182, 212, 0.08));
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  text-align: center;
+  position: relative;
+}
+
+.intro-callout .label {
+  font-size: 0.85rem;
+  color: var(--accent-light);
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-family: var(--font-latin);
+}
+
+.intro-callout .quote {
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+/* ============================================
+   TASK VARIETY GRID
+============================================ */
+.task-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 22px;
+}
+
+.task-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.task-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: var(--transition);
+}
+
+.task-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
+}
+
+.task-card:hover::after { transform: scaleX(1); }
+
+.task-number {
+  font-family: var(--font-latin);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  margin-bottom: 12px;
+  letter-spacing: 2px;
+}
+
+.task-card h4 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+.task-card p {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.75;
+}
+
+/* ============================================
+   TIMELINE (Journey Steps)
+============================================ */
+.timeline {
+  position: relative;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 40px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--primary), var(--accent), transparent);
+}
+
+.timeline-step {
+  position: relative;
+  padding-right: 110px;
+  margin-bottom: 50px;
+}
+
+.timeline-step:last-child { margin-bottom: 0; }
+
+.timeline-marker {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 82px;
+  height: 82px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-latin);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: white;
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.35);
+  border: 4px solid var(--bg-base);
+  z-index: 1;
+}
+
+.timeline-content {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  transition: var(--transition);
+}
+
+.timeline-content:hover {
+  border-color: var(--primary);
+  transform: translateX(-6px);
+}
+
+.timeline-content h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: var(--text-primary);
+}
+
+.timeline-content p {
+  color: var(--text-secondary);
+  line-height: 1.85;
+  margin-bottom: 14px;
+}
+
+.timeline-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0;
+}
+
+.timeline-content ul li {
+  padding: 10px 0;
+  padding-right: 28px;
+  position: relative;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.timeline-content ul li::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 18px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+}
+
+/* ============================================
+   ALERT BOXES
+============================================ */
+.alert {
+  border-radius: var(--radius-md);
+  padding: 18px 22px;
+  margin: 18px 0;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  border: 1px solid;
+}
+
+.alert-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+
+.alert-body { flex: 1; }
+
+.alert-title {
+  font-weight: 700;
+  margin-bottom: 4px;
+  font-size: 0.98rem;
+}
+
+.alert-text {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.75;
+}
+
+.alert-danger {
+  background: var(--danger-soft);
+  border-color: rgba(239, 68, 68, 0.35);
+}
+.alert-danger .alert-icon { background: var(--danger); color: white; }
+.alert-danger .alert-title { color: var(--danger); }
+
+.alert-warning {
+  background: var(--warning-soft);
+  border-color: rgba(245, 158, 11, 0.35);
+}
+.alert-warning .alert-icon { background: var(--warning); color: white; }
+.alert-warning .alert-title { color: var(--warning); }
+
+.alert-success {
+  background: var(--success-soft);
+  border-color: rgba(16, 185, 129, 0.35);
+}
+.alert-success .alert-icon { background: var(--success); color: white; }
+.alert-success .alert-title { color: var(--success); }
+
+.alert-info {
+  background: var(--info-soft);
+  border-color: rgba(59, 130, 246, 0.35);
+}
+.alert-info .alert-icon { background: var(--info); color: white; }
+.alert-info .alert-title { color: var(--info); }
+
+/* ============================================
+   SKILLS TABLE
+============================================ */
+.skills-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 20px 0;
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+}
+
+.skills-table th,
+.skills-table td {
+  padding: 16px 20px;
+  text-align: right;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.skills-table th {
+  background: var(--bg-elevated);
+  font-weight: 700;
+  color: var(--accent-light);
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+.skills-table tr:last-child td { border-bottom: none; }
+.skills-table tr:hover td { background: var(--bg-glass); }
+.skills-table td { color: var(--text-secondary); font-size: 0.94rem; }
+
+/* ============================================
+   CV SKILLS SPECIAL BOX
+============================================ */
+.cv-skills-box {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.06), rgba(99, 102, 241, 0.06));
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  margin-top: 24px;
+  position: relative;
+}
+
+.cv-skills-box .cv-label {
+  display: inline-block;
+  padding: 5px 14px;
+  background: var(--gold);
+  color: var(--bg-base);
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: 20px;
+  margin-bottom: 14px;
+  letter-spacing: 0.5px;
+}
+
+.cv-skills-box h4 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.cv-skills-box p {
+  color: var(--text-secondary);
+  line-height: 1.85;
+  margin-bottom: 18px;
+}
+
+.cv-skills-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+.cv-skills-list li {
+  padding: 12px 16px;
+  background: var(--bg-glass-strong);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  transition: var(--transition);
+}
+
+.cv-skills-list li:hover {
+  border-color: var(--gold);
+  background: rgba(245, 158, 11, 0.08);
+  transform: translateX(-4px);
+}
+
+/* ============================================
+   EXPERT MATCH SECTION
+============================================ */
+.expert-match {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(6, 182, 212, 0.05));
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: var(--radius-xl);
+  padding: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.expert-match-content .em-tag {
+  display: inline-block;
+  padding: 6px 16px;
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--gold-light);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 100px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  margin-bottom: 18px;
+  font-family: var(--font-latin);
+}
+
+.expert-match-content h3 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 18px;
+  line-height: 1.3;
+}
+
+.expert-match-content p {
+  color: var(--text-secondary);
+  line-height: 1.9;
+  margin-bottom: 18px;
+  font-size: 1rem;
+}
+
+.em-steps {
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  border: 1px solid var(--border-subtle);
+}
+
+.em-steps h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: var(--accent-light);
+}
+
+.em-steps ol {
+  list-style: none;
+  counter-reset: em-counter;
+  padding: 0;
+}
+
+.em-steps ol li {
+  counter-increment: em-counter;
+  padding: 14px 0;
+  padding-right: 50px;
+  position: relative;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.em-steps ol li:last-child { border-bottom: none; }
+
+.em-steps ol li::before {
+  content: counter(em-counter);
+  position: absolute;
+  right: 0;
+  top: 12px;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-latin);
+  font-weight: 800;
+  color: white;
+  font-size: 0.9rem;
+}
+
+/* ============================================
+   EMPTY QUEUE SECTION
+============================================ */
+.eq-hero {
+  background: linear-gradient(135deg, var(--bg-surface), var(--bg-elevated));
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 50px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.eq-hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.15), transparent 60%);
+  border-radius: 50%;
+}
+
+.eq-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--accent), var(--primary));
+  border-radius: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  font-size: 2rem;
+  font-weight: 800;
+  font-family: var(--font-latin);
+  color: white;
+  box-shadow: var(--shadow-glow);
+  position: relative;
+}
+
+.eq-hero h3 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 14px;
+  position: relative;
+}
+
+.eq-hero .eq-sub {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  max-width: 600px;
+  margin: 0 auto 28px;
+  line-height: 1.85;
+  position: relative;
+}
+
+.eq-pills {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.eq-pill {
+  padding: 10px 20px;
+  background: var(--bg-glass-strong);
+  border: 1px solid var(--border-strong);
+  border-radius: 100px;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+.eq-pill strong { color: var(--accent-light); font-family: var(--font-latin); }
+
+.eq-tips {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.eq-tip {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.eq-tip:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+
+.eq-tip-num {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  background: var(--bg-elevated);
+  border-radius: 10px;
+  line-height: 36px;
+  font-family: var(--font-latin);
+  font-weight: 800;
+  color: var(--accent-light);
+  margin-bottom: 12px;
+}
+
+.eq-tip h5 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.eq-tip p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ============================================
+   RESPONSIVE
+============================================ */
+@media (max-width: 900px) {
+  .nav-menu { display: none; }
+  .nav-toggle { display: flex; align-items: center; justify-content: center; }
+  .nav-menu.open {
+    display: flex;
+    position: absolute;
+    top: 70px;
+    right: 16px;
+    left: 16px;
+    flex-direction: column;
+    padding: 16px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-md);
+    align-items: stretch;
+  }
+  .nav-menu.open a { padding: 12px 14px; }
+
+  .intro-grid { grid-template-columns: 1fr; }
+  .expert-match { grid-template-columns: 1fr; padding: 32px; }
+  .eq-tips { grid-template-columns: 1fr; }
+  .hero-stats { grid-template-columns: 1fr; }
+
+  section { padding: 70px 0; }
+
+  .timeline::before { right: 24px; }
+  .timeline-step { padding-right: 72px; }
+  .timeline-marker {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    border-radius: 14px;
+  }
+  .timeline-content { padding: 22px; }
+
+  .eq-hero { padding: 32px 24px; }
+}
+
+@media (max-width: 600px) {
+  .navbar { padding: 12px 16px; }
+  .container { padding: 0 16px; }
+  .glass-card, .intro-card { padding: 24px; }
+  .hero { padding: 100px 16px 60px; }
+}
+</style>
+</head>
+<body>
+
+<!-- READING PROGRESS BAR -->
+<div class="progress-bar"><div class="progress-bar-fill" id="progressFill"></div></div>
+
+<!-- NAVIGATION -->
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="#top" class="nav-brand">
+      <div class="nav-brand-icon">O</div>
+      <span>Outlier Guide</span>
+    </a>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="#intro">المقدمة</a></li>
+      <li><a href="#tasks">المهام</a></li>
+      <li><a href="#journey">الرحلة</a></li>
+      <li><a href="#guidelines">الـ Guidelines</a></li>
+      <li><a href="#prohibited">الممنوعات</a></li>
+      <li><a href="#payment">الدفع</a></li>
+      <li><a href="#cta">ابدأ</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="القائمة">☰</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      <span>دليل عملي مبني على البحث والتجربة</span>
+    </div>
+
+    <h1 class="hero-title">
+      الدليل الشامل للعمل في
+      <br />
+      <span class="grad">Outlier</span> من مصر
+    </h1>
+
+    <p class="hero-subtitle">
+      من لحظة ضغطك على رابط التسجيل، وحتى استلام أول مبلغ في حسابك.
+      دليل تفصيلي يشرح المجال، يكشف لك القواعد الصارمة، ويأخذ بيدك خطوة بخطوة لتعمل باحتراف، وتتجنب الأخطاء التي تُغلق الحسابات.
+    </p>
+
+        <div class="hero-warning">
+      <div class="hero-warning-icon">!</div>
+      <div class="hero-warning-text">
+        <strong>قبل أن تضغط على أي رابط:</strong> هذا الملف ليس قراءة اختيارية. بدون استيعاب المعلومات التي بداخله، لن تعرف كيف تبدأ، وقد تقع في أخطاء تُغلق حسابك من اليوم الأول. اقرأ أولاً، ثم سجّل.
+      </div>
+    </div>
+
+    <div class="hero-actions">
+      <a href="#intro" class="btn btn-primary">
+        ابدأ القراءة أولاً
+        <span style="font-family: var(--font-latin);">→</span>
+      </a>
+      <a href="https://app.outlier.ai/expert/referrals/link/4Ltfmvpmy1PP2LwRBP5o73lju-I" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+        رابط التسجيل (بعد القراءة)
+        <span style="font-family: var(--font-latin);">↗</span>
+      </a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-number">RLHF</div>
+        <div class="stat-label">المجال الذي يُدرّب نماذج الذكاء الاصطناعي</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">$7.5–50+</div>
+        <div class="stat-label">أجر الساعة التقريبي (يختلف حسب المشروع)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">75%</div>
+        <div class="stat-label">من نجاحك يعتمد على اتباع التعليمات</div>
+      </div>
+    </div>
+
+    <div class="hero-disclaimer">
+      <span>⚠</span>
+      <span>هذا الملف خاص — ممنوع نشره أو إعادة توزيعه</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================
+     SECTION 1: WHAT IS THE FIELD
+============================================ -->
+<section id="intro">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">المقدمة</span>
+      <h2 class="section-title">ما هو هذا المجال؟ <span class="grad">ولماذا أنت بالذات؟</span></h2>
+      <p class="section-subtitle">
+        قبل أن نتحدث عن التسجيل والقواعد، يجب أن تفهم طبيعة العمل الذي ستقوم به، ولماذا تدفع شركات بمليارات الدولارات لأشخاص حول العالم ليقوموا به.
+      </p>
+    </div>
+
+    <div class="intro-grid">
+      <div class="intro-card">
+        <div class="intro-card-icon">AI</div>
+        <h3>تدريب الذكاء الاصطناعي (RLHF)</h3>
+        <p>
+          المجال يقوم على تقنية اسمها <span class="highlight">التعلم المعزز من الملاحظات البشرية (RLHF)</span>.
+          باختصار: نماذج مثل ChatGPT و Claude و Gemini تحتاج إلى بشر حقيقيين لتقييم إجاباتها، وتصحيح أخطائها، وتعليمها كيف ترد بشكل دقيق، آمن، ومفيد.
+          أنت لست مُدخل بيانات؛ أنت <span class="highlight">خبير بشري يُعلّم الآلة كيف تفكر</span>.
+        </p>
+      </div>
+
+      <div class="intro-card">
+        <div class="intro-card-icon">O</div>
+        <h3>منصة Outlier</h3>
+        <p>
+          منصة تابعة لشركة <span class="highlight">Scale AI</span>، إحدى أكبر شركات تدريب الذكاء الاصطناعي في العالم.
+          تربط الخبراء البشريين بمشاريع الشركات الكبرى التي تطوّر نماذج اللغة.
+          الأجر يتراوح عادةً بين <span class="highlight">7.5 إلى 50+ دولار في الساعة</span> بحسب تخصصك، اللغة التي تعمل بها، وطبيعة المشروع، والدفع يتم أسبوعياً.
+        </p>
+      </div>
+    </div>
+
+    <div class="intro-callout">
+      <div class="label">القاعدة الأهم</div>
+      <div class="quote">
+        "خمسة وسبعون بالمئة من نجاحك في هذا المجال يعتمد على شيء واحد فقط: اتباع التعليمات بحذافيرها."
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SECTION 2: TASK VARIETY
+============================================ -->
+<section id="tasks">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">تنوع المهام</span>
+      <h2 class="section-title">أنت لست <span class="grad">آلة نسخ ولصق</span></h2>
+      <p class="section-subtitle">
+        من أكثر المفاهيم الخاطئة أن العمل هنا يقتصر على نوع واحد من المهام. الحقيقة أن المهام متنوعة جداً، وتغطي مجالات متعددة تناسب مختلف المهارات والتخصصات.
+      </p>
+    </div>
+
+    <div class="task-grid">
+      <div class="task-card">
+        <div class="task-number">01 / TASK</div>
+        <h4>تقييم جودة الاستجابات</h4>
+        <p>تقرأ إجابات الذكاء الاصطناعي وتُقيّمها بناءً على الدقة، الأمان، الفائدة، ومدى الالتزام بالموجّه (Prompt).</p>
+      </div>
+
+      <div class="task-card">
+        <div class="task-number">02 / TASK</div>
+        <h4>المقارنة بين النماذج</h4>
+        <p>توضع أمامك إجابتان لنفس السؤال من نموذجين مختلفين، عليك اختيار الأفضل وتبرير اختيارك بشكل منطقي ومفصّل.</p>
+      </div>
+
+      <div class="task-card">
+        <div class="task-number">03 / TASK</div>
+        <h4>كتابة الموجّهات (Prompts)</h4>
+        <p>تكتب أسئلة أو أوامر دقيقة ومبتكرة لاختبار قدرات النموذج في مواضيع وتخصصات بعينها.</p>
+      </div>
+
+      <div class="task-card">
+        <div class="task-number">04 / TASK</div>
+        <h4>التحقق من الحقائق</h4>
+        <p>تبحث عبر الإنترنت للتأكد من أن النموذج لا "يهلوس" (يخترع معلومات غير صحيحة) وتُصحّح المعلومات المغلوطة.</p>
+      </div>
+
+      <div class="task-card">
+        <div class="task-number">05 / TASK</div>
+        <h4>مراجعة الأكواد البرمجية</h4>
+        <p>للمبرمجين فقط: مراجعة الأكواد التي يولّدها النموذج، التأكد من صحتها، تشغيلها، واكتشاف الأخطاء البرمجية.</p>
+      </div>
+
+      <div class="task-card">
+        <div class="task-number">06 / TASK</div>
+        <h4>مهام متخصصة</h4>
+        <p>تقييم استشارات طبية أو قانونية، تصنيف صور ومقاطع صوتية، أو مهام لغوية وثقافية تتطلب خبرة في مجال بعينه.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SECTION 3: JOURNEY (5 STEPS)
+============================================ -->
+<section id="journey">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tتمام، الجزء الثاني — يكمل من حيث توقف الجزء الأول مباشرة. **الصق هذا الكود في النهاية فورًا بعد الجزء الأول:**
+
+```html
+ag">رحلة البداية</span>
+      <h2 class="section-title">من ضغطة الزر <span class="grad">إلى أول مشروع</span></h2>
+      <p class="section-subtitle">
+        عندما تضغط على رابط التسجيل، تدخل في مسار دقيق اسمه "Onboarding". هذه الخطوات الخمس هي ما ستمرّ به بالضبط.
+      </p>
+    </div>
+
+    <div class="timeline">
+
+      <div class="timeline-step">
+        <div class="timeline-marker">1</div>
+        <div class="timeline-content">
+          <h3>التسجيل الأساسي وإنشاء الحساب</h3>
+          <p>
+            بمجرد دخولك للرابط، سيُطلب منك إدخال بياناتك الأساسية: الاسم الكامل، البريد الإلكتروني، ورقم الهاتف. يجب أن تكون هذه البيانات حقيقية تماماً ومطابقة لأوراقك الرسمية، لأن مرحلة التحقق التالية ستكشف أي تلاعب.
+          </p>
+          <div class="alert alert-danger">
+            <div class="alert-icon">✕</div>
+            <div class="alert-body">
+              <div class="alert-title">ممنوع منعاً باتاً استخدام VPN</div>
+              <div class="alert-text">
+                المنصة تكشف الـ IP بدقة. أي محاولة للدخول من IP لا يطابق بياناتك تعني حظراً نهائياً وتجميداً كاملاً للأرباح. هذه القاعدة سارية من أول لحظة وحتى آخر يوم في عملك.
+              </div>
+            </div>
+          </div>
+          <div class="alert alert-success">
+            <div class="alert-icon">✓</div>
+            <div class="alert-body">
+              <div class="alert-title">استخدم بريداً إلكترونياً نظيفاً</div>
+              <div class="alert-text">يُفضّل بريد لم يُستخدم سابقاً في التسجيل على المنصة، وحساباً واحداً فقط لكل شخص.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-step">
+        <div class="timeline-marker">2</div>
+        <div class="timeline-content">
+          <h3>التحقق من الهوية (Persona IDV)</h3>
+          <p>
+            Outlier تستخدم نظاماً أمنياً متخصصاً اسمه <strong>Persona</strong> للتحقق من هويتك. ستمر بمرحلتين:
+          </p>
+          <ul>
+            <li>رفع صورة واضحة لهوية حكومية سارية (بطاقة شخصية أو جواز سفر).</li>
+            <li>فتح الكاميرا لأخذ صورة "سيلفي" حية أو تحريك وجهك في اتجاهات مختلفة لإثبات أنك شخص حقيقي.</li>
+          </ul>
+          <p>
+            الهدف من هذه المرحلة هو التأكد من ثلاث نقاط: أنك إنسان حقيقي، أنك لا تملك حسابات متعددة، وأنك تقيم فعلياً في الدولة التي سجلت منها.
+          </p>
+          <div class="alert alert-warning">
+            <div class="alert-icon">!</div>
+            <div class="alert-body">
+              <div class="alert-title">احذر هذه الأخطاء</div>
+              <div class="alert-text">صور Scan للهوية، أو هويات منتهية الصلاحية، أو استخدام صورة شخص آخر — كلها تؤدي إلى حظر فوري ودائم.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-step">
+        <div class="timeline-marker">3</div>
+        <div class="timeline-content">
+          <h3>إعداد الملف الشخصي واختيار المهارات</h3>
+          <p>
+            هذه هي الخطوة التي ستحدد مسارك بالكامل على المنصة. سيُطلب منك إضافة اللغات التي تتقنها ومجالات خبرتك، إما عبر رفع سيرتك الذاتية مباشرة، أو ربط حسابك في LinkedIn. النظام يستخرج المهارات تلقائياً ويبدأ في مطابقتك مع المشاريع المناسبة.
+          </p>
+
+          <table class="skills-table">
+            <thead>
+              <tr>
+                <th>حالتك</th>
+                <th>المهارة المقترحة</th>
+                <th>الفائدة</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>تتقن العربية بمستوى أصلي</td>
+                <td>Arabic / Bilingual</td>
+                <td>طلب كبير على تدريب النماذج باللغة والثقافة العربية</td>
+              </tr>
+              <tr>
+                <td>إنجليزيتك ممتازة وكتابتك قوية</td>
+                <td>Generalist</td>
+                <td>مهام تقييم الردود وكتابة Prompts بالإنجليزية</td>
+              </tr>
+              <tr>
+                <td>لديك تخصص (برمجة، طب، رياضيات)</td>
+                <td>التخصص نفسه</td>
+                <td>أجر أعلى بكثير ومشاريع مستمرة</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="alert alert-danger">
+            <div class="alert-icon">✕</div>
+            <div class="alert-body">
+              <div class="alert-title">لا تختر مهارة لا تتقنها</div>
+              <div class="alert-text">النظام سيختبرك في كل مهارة تختارها. إذا فشلت، سيُستبعدك من تلك المهارة، وقد يؤثر ذلك على ملفك بالكامل.</div>
+            </div>
+          </div>
+
+          <div class="cv-skills-box">
+            <span class="cv-label">سرّ لا يعرفه الجميع</span>
+            <h4>السيرة الذاتية شاملة لكل مهاراتك</h4>
+            <p>
+              النظام يقرأ سيرتك الذاتية ويستخرج منها مهاراتك بشكل آلي. <strong>كل مهارة موجودة في سيرتك الذاتية = باب محتمل لمشروع جديد</strong>. لا تستهن بأي مهارة حتى لو ظننت أنها بسيطة أو لا علاقة لها بالتكنولوجيا.
+              هناك مشاريع كاملة تحتاج خبراء في مجالات تظنها غير مهمة، لأن النماذج تحتاج أن تتعلم عن كل شيء في حياة البشر.
+            </p>
+            <ul class="cv-skills-list">
+              <li>تربية الدواجن أو المواشي</li>
+              <li>الزراعة وأنواع المحاصيل</li>
+              <li>صناعة العطور</li>
+              <li>الطبخ والمأكولات الشعبية</li>
+              <li>الحرف اليدوية</li>
+              <li>معرفة عميقة برياضة معينة</li>
+              <li>ألعاب الفيديو</li>
+              <li>المعرفة الدينية والفقهية</li>
+              <li>الثقافة المحلية لمنطقتك</li>
+              <li>السياقة وأنواع السيارات</li>
+              <li>الموسيقى والآلات</li>
+              <li>التاريخ والآثار</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-step">
+        <div class="timeline-marker">4</div>
+        <div class="timeline-content">
+          <h3>الـ Onboarding والاختبارات</h3>
+          <p>
+            <strong>مهم أن تفهم:</strong> كلمة Onboarding لا تعني أنك "عُيّنت" رسمياً. هي مرحلة تقييم وتأهيل. في هذه المرحلة، ستطلب منك المنصة قراءة أدلة إرشادية (Guidelines) ثم إجراء اختبارات قبول (Assessments) تقيس مهاراتك في الكتابة، انتباهك للتفاصيل، وقدرتك على اتباع التعليمات حرفياً.
+          </p>
+          <ul>
+            <li>قراءة الـ Guidelines والتدريب غالباً <strong>غير مدفوعة الأجر</strong>.</li>
+            <li>الاختبارات نفسها قد تكون بأجر رمزي أو مجانية.</li>
+            <li>جودة إجاباتك هنا هي ما يحدد المشاريع التي ستُسند إليك لاحقاً.</li>
+            <li>يجب إنهاء أي اختبار في <strong>جلسة واحدة متصلة</strong>. إغلاق المتصفح أو ترك الشاشة طويلاً قد يُغلق الاختبار ويُسجّل عليك رسوباً.</li>
+          </ul>
+          <div class="alert alert-warning">
+            <div class="alert-icon">!</div>
+            <div class="alert-body">
+              <div class="alert-title">الـ Onboarding ليس روتيناً — هو شرط البقاء</div>
+              <div class="alert-text">
+                إذا لم تجتز Onboarding أي مشروع، فلن تُقبل فيه، وقد يُغلق المشروع كاملاً في وجهك. اعتبر هذه الاختبارات مقابلة العمل النهائية، واقرأ الـ Guidelines بكل دقة قبل البدء.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-step">
+        <div class="timeline-marker">5</div>
+        <div class="timeline-content">
+          <h3>المفاجأة الأولى — لوحة التحكم فارغة</h3>
+          <p>
+            بعد أن تنهي كل التجهيزات وتجتاز الاختبارات، ستدخل إلى لوحة التحكم لتجدها فارغة تماماً، بلا أي مشاريع. ستظنّ أن هناك خطأً ما، أو أنك رُفضت. هذا الجزء يستحق قسماً منفصلاً بالكامل، لأن فهمه الصحيح هو ما يحدد إذا كنت ستستمر أم تيأس مبكراً.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SECTION 4: EXPERT MATCH
+============================================ -->
+<section id="expert-match">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">ميزة قوية</span>
+      <h2 class="section-title">Expert Match — <span class="grad">دع المشاريع تأتي إليك</span></h2>
+      <p class="section-subtitle">
+        ميزة كثير من المستخدمين الجدد يغفلون عنها، رغم أنها قد تكون السبب الرئيسي في حصولك على مشاريع مدفوعة عالية الأجر.
+      </p>
+    </div>
+
+    <div class="expert-match">
+      <div class="expert-match-content">
+        <span class="em-tag">EXPERT MATCH</span>
+        <h3>المشاريع تبحث عنك<br/>بدلاً من العكس</h3>
+        <p>
+          Expert Match ميزة تتيح لباحثي الذكاء الاصطناعي على المنصة مراجعة ملفك الشخصي، ودعوتك مباشرةً للعمل على مشاريعهم بناءً على مهاراتك وخبرتك.
+        </p>
+        <p>
+          بمعنى آخر: بدلاً من انتظار ظهور المشاريع في طابور الانتظار، يقوم الباحثون أنفسهم بإرسال دعوات لك لمشاريع تناسب ملفك تماماً. هذا يفتح لك باب المشاريع المتخصصة والمدفوعة بشكل أعلى من المتوسط.
+        </p>
+        <div class="alert alert-info" style="margin-top: 20px;">
+          <div class="alert-icon">i</div>
+          <div class="alert-body">
+            <div class="alert-title">ملف شخصي محدّث = دعوات أكثر</div>
+            <div class="alert-text">لا تفعّل الميزة وتنساها. حدّث مهاراتك وخبرتك باستمرار حتى تظهر للباحثين الصحيحين.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="em-steps">
+        <h4>خطوات التفعيل</h4>
+        <ol>
+          <li>ادخل على ملفك الشخصي (Profile)</li>
+          <li>اذهب إلى قسم Expert Match</li>
+          <li>فعّل الخيار من المفتاح المخصص</li>
+          <li>تأكد من اكتمال مهاراتك وخبراتك</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SECTION 5: EMPTY QUEUE
+============================================ -->
+<section id="empty-queue">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">طابور الانتظار</span>
+      <h2 class="section-title">لماذا لوحة التحكم <span class="grad">فارغة؟</span></h2>
+      <p class="section-subtitle">
+        هذه المرحلة هي السبب الأول الذي يجعل الكثيرين ينسحبون من المنصة مبكراً، رغم أنها مرحلة طبيعية تماماً ولها تفسير منطقي.
+      </p>
+    </div>
+
+    <div class="eq-hero">
+      <div class="eq-icon">EQ</div>
+      <h3>الأمر طبيعي تماماً — لا تقلق</h3>
+      <p class="eq-sub">
+        اجتيازك للاختبارات يعني أنك دخلت "طابور الانتظار" (Waiting Pool). المنصة لن تُرسل لك مشروعاً إلا عندما يتوفر مشروع يطابق مهاراتك ولغتك. عدم وجود مشاريع في الأيام الأولى لا يعني أبداً أنك رسبت أو رُفضت.
+      </p>
+      <div class="eq-pills">
+        <div class="eq-pill">البعض يحصل على مشروع في <strong>نفس اليوم</strong></div>
+        <div class="eq-pill">البعض ينتظر <strong>أسبوع إلى 4 أسابيع</strong></div>
+        <div class="eq-pill">الدعم الفني <strong>لن يُسرّع</strong> العملية</div>
+      </div>
+    </div>
+
+    <div class="eq-tips">
+      <div class="eq-tip">
+        <div class="eq-tip-num">01</div>
+        <h5>سجّل الدخول يومياً</h5>
+        <p>افتح لوحة التحكم مرة واحدة يومياً على الأقل لمراجعة أي مهام جديدة أو اختبارات تأهيلية لمشاريع معينة.</p>
+      </div>
+      <div class="eq-tip">
+        <div class="eq-tip-num">02</div>
+        <h5>راقب بريدك الإلكتروني</h5>
+        <p>دعوات المشاريع وتحديثات القبول تُرسل عبر البريد. تحقق من Spam/Junk أيضاً، فأحياناً تذهب الرسائل المهمة هناك.</p>
+      </div>
+      <div class="eq-tip">
+        <div class="eq-tip-num">03</div>
+        <h5>استثمر وقتك في Playground</h5>
+        <p>الدخول النشط لساحة التجارب يُبقي حسابك "Active" ويزيد فرصة دعوتك لمشاريع جديدة.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SECTION 6: JUSTIFICATION (PEEL)
+============================================ -->
+<style>
+.peel-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 30px 0;
+  direction: ltr;
+}
+.peel-card { direction: rtl; }.peel-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 28px 22px;
+  text-align: center;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.peel-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-6px);
+}
+.peel-letter {
+  font-family: var(--font-latin);
+  font-size: 3.5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.peel-word {
+  font-family: var(--font-latin);
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+.peel-card h5 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+.peel-card p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+.comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 30px;
+}
+.comp-box {
+  border-radius: var(--radius-md);
+  padding: 26px;
+  border: 1px solid;
+}
+.comp-bad {
+  background: var(--danger-soft);
+  border-color: rgba(239, 68, 68, 0.35);
+}
+.comp-good {
+  background: var(--success-soft);
+  border-color: rgba(16, 185, 129, 0.35);
+}
+.comp-label {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  letter-spacing: 0.5px;
+}
+.comp-bad .comp-label { background: var(--danger); color: white; }
+.comp-good .comp-label { background: var(--success); color: white; }
+.comp-box p {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-size: 0.93rem;
+}
+
+@media (max-width: 800px) {
+  .payment-hero { grid-template-columns: 1fr; padding: 32px; }
+  .compare-table { font-size: 0.85rem; }
+  .compare-table th, .compare-table td { padding: 12px 14px; }
+  #payment .container > div[style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
+}</style>
+
+<section id="justification">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">الجاستفكيشن</span>
+      <h2 class="section-title">إتقان الـ <span class="grad">Justification</span></h2>
+      <p class="section-subtitle">
+        الـ Justification هو التبرير المكتوب الذي تشرح فيه لماذا اخترت ردّاً معيناً أو قيّمت إجابة بطريقة معينة. هذا التبرير هو ما يثبت للمراجع أنك فاهم وملتزم بالـ Guidelines، وهو غالباً سبب الرفض الأول للمبتدئين.
+      </p>
+    </div>
+
+    <h3 style="text-align: center; font-size: 1.4rem; margin-bottom: 8px; color: var(--accent-light);">منهجية PEEL</h3>
+    <p style="text-align: center; color: var(--text-muted); margin-bottom: 10px;">إطار احترافي لكتابة تبرير لا يُرفض</p>
+
+    <div class="peel-grid">
+      <div class="peel-card">
+        <div class="peel-letter">P</div>
+        <div class="peel-word">Point</div>
+        <h5>النقطة</h5>
+        <p>اذكر الحكم النهائي بوضوح في أول جملة، دون مقدمات أو ترددات.</p>
+      </div>
+      <div class="peel-card">
+        <div class="peel-letter">E</div>
+        <div class="peel-word">Evidence</div>
+        <h5>الدليل</h5>
+        <p>اقتباس حرفي محدد من النص أو الرد، يدعم النقطة التي ذكرتها.</p>
+      </div>
+      <div class="peel-card">
+        <div class="peel-letter">E</div>
+        <div class="peel-word">Explanation</div>
+        <h5>التفسير</h5>
+        <p>اشرح لماذا هذا الدليل مهم وكيف يرتبط بمعايير التقييم في الـ Guidelines.</p>
+      </div>
+      <div class="peel-card">
+        <div class="peel-letter">L</div>
+        <div class="peel-word">Link</div>
+        <h5>الربط</h5>
+        <p>اربط الشرح بالنتيجة النهائية والحكم الذي خرجت به، ليكتمل المنطق.</p>
+      </div>
+    </div>
+
+    <div class="comparison">
+      <div class="comp-box comp-bad">
+        <span class="comp-label">تبرير ضعيف ✕</span>
+        <p>
+          "أنا أعتقد أن الرد A أفضل لأنه واضح ومفهوم وأسلوبه جيد. الرد B لم يعجبني، فيه مشاكل كثيرة وأفضل الرد A."
+        </p>
+      </div>
+      <div class="comp-box comp-good">
+        <span class="comp-label">تبرير احترافي ✓</span>
+        <p>
+          "يُعتبر الرد A أفضل من B لأنه التزم بالقيد المذكور في الموجّه بتقديم ثلاث نقاط مرقّمة، بينما خالف الرد B هذا الشرط وقدّم فقرة واحدة. هذا الالتزام بتعليمات المستخدم يُعدّ معيار Instruction Following في الـ Guidelines، مما يجعل الرد A أعلى جودةً وفائدةً."
+        </p>
+      </div>
+    </div>
+
+       <div class="alert alert-danger" style="margin-top: 30px;">
+      <div class="alert-icon">EN</div>
+      <div class="alert-body">
+        <div class="alert-title">الجاستفكيشن يُكتب بالإنجليزية دائماً</div>
+        <div class="alert-text">
+          حتى لو كانت لغة المهمة نفسها عربية، التبرير (Justification) يجب أن يُكتب بالإنجليزية. هذه قاعدة ثابتة في معظم المشاريع، لأن المراجعين الداخليين في Outlier يعملون بالإنجليزية. كتابة التبرير بالعربية في مشروع يتطلب الإنجليزية يعني رفضاً مباشراً للمهمة وتأثيراً سلبياً على تقييمك.
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-warning" style="margin-top: 18px;">
+      <div class="alert-icon">!</div>
+      <div class="alert-body">
+        <div class="alert-title">قواعد ذهبية للجاستفكيشن</div>
+        <div class="alert-text">
+          تجنّب صيغة المتكلم ("I think"، "In my opinion") واستخدم صيغة موضوعية. التبرير يجب ألا يكون عاماً يصلح لأي مهمة، بل خاصاً بهذه المهمة تحديداً. لا تقارن بين النماذج داخل صندوق تبرير معيار واحد — المقارنة الشاملة تكون في صندوق "Final Justification" في نهاية المهمة.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SECTION 7: GUIDELINES — GOLDEN CHARTER
+============================================ -->
+<style>
+.golden-quote {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(99, 102, 241, 0.05));
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: var(--radius-xl);
+  padding: 50px;
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+  overflow: hidden;
+}
+.golden-quote::before {
+  content: '"';
+  position: absolute;
+  top: -40px;
+  right: 30px;
+  font-size: 12rem;
+  font-family: var(--font-quran);
+  color: rgba(245, 158, 11, 0.1);
+  line-height: 1;
+}
+.golden-label {
+  display: inline-block;
+  padding: 6px 18px;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  color: var(--gold-light);
+  border-radius: 100px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 22px;
+  font-family: var(--font-latin);
+}
+.golden-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.6;
+  max-width: 760px;
+  margin: 0 auto;
+  color: var(--text-primary);
+}
+.golden-text .accent {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.rules-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+.rule-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: var(--transition);
+}
+.rule-item:hover { border-color: var(--gold); }
+.rule-header {
+  padding: 22px 26px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  cursor: pointer;
+  transition: var(--transition);
+  user-select: none;
+}
+.rule-header:hover { background: var(--bg-glass); }
+.rule-number {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-latin);
+  font-weight: 800;
+  color: var(--bg-base);
+  font-size: 1.1rem;
+}
+.rule-title {
+  flex: 1;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.rule-toggle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg-elevated);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  transition: var(--transition);
+}
+.rule-item.open .rule-toggle {
+  transform: rotate(45deg);
+  background: var(--primary);
+  color: white;
+}
+.rule-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.rule-body-inner {
+  padding: 0 26px 26px 26px;
+  color: var(--text-secondary);
+  line-height: 1.9;
+  font-size: 0.95rem;
+}
+.rule-item.open .rule-body { max-height: 500px; }
+</style>
+
+<section id="guidelines">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">الميثاق الذهبي</span>
+      <h2 class="section-title">الـ <span class="grad">Guidelines</span> هي حياتك</h2>
+      <p class="section-subtitle">
+        إذا سألت أي خبير في هذا المجال عن سرّ بقائه وعدم تعرّضه للحظر، سيقول لك جملة واحدة. وقت قراءتك للـ Guidelines ليس وقتاً ضائعاً — هو الاستثمار الأهم في حسابك.
+      </p>
+    </div>
+
+    <div class="golden-quote">
+      <span class="golden-label">THE GOLDEN RULE</span>
+      <div class="golden-text">
+        خمسة وسبعون بالمئة من نجاحك في هذا العمل يعتمد ببساطة على
+        <span class="accent">اتباع التعليمات بحذافيرها</span>.
+      </div>
+    </div>
+
+    <div class="rules-list">
+      <div class="rule-item">
+        <div class="rule-header">
+          <div class="rule-number">01</div>
+          <div class="rule-title">الالتزام الحرفي القاتل (Literal Adherence)</div>
+          <div class="rule-toggle">+</div>
+        </div>
+        <div class="rule-body">
+          <div class="rule-body-inner">
+            خوارزميات التقييم والمراجعون البشريون لا يبحثون عن إبداع خارج النص، بل عن التطابق التام. إذا نصّت التعليمات على "اكتب التبرير في 2-3 جمل" وكتبت 4 جمل، فسيُعتبر هذا فشلاً في اتباع التعليمات ويؤدي للرفض الفوري. لا تفترض ولا تخمّن ما يريده العميل — اقرأ التعليمات، وإذا طلب منك شيئاً يبدو غريباً، نفّذه كما هو مكتوب بالضبط.
+          </div>
+        </div>
+      </div>
+
+      <div class="rule-item">
+        <div class="rule-header">
+          <div class="rule-number">02</div>
+          <div class="rule-title">الـ Guidelines تتغيّر يومياً</div>
+          <div class="rule-toggle">+</div>
+        </div>
+        <div class="rule-body">
+          <div class="rule-body-inner">
+            أكبر فخ يقع فيه المبتدئون هو الاعتماد على الذاكرة. تعليمات المشاريع تتغيّر وتُحدَّث باستمرار، أحياناً في نفس اليوم. الاستمرار في العمل بناءً على تعليمات قديمة سيؤدي إلى تقييمات سيئة وطرد من المشروع. الحل: ادخل يومياً قبل بدء العمل إلى قنوات التواصل (Discourse أو Slack) لمعرفة آخر التعديلات.
+          </div>
+        </div>
+      </div>
+
+      <div class="rule-item">
+        <div class="rule-header">
+          <div class="rule-number">03</div>
+          <div class="rule-title">قاعدة الشاشة المزدوجة (Side-by-Side)</div>
+          <div class="rule-toggle">+</div>
+        </div>
+        <div class="rule-body">
+          <div class="rule-body-inner">
+            لا تقرأ الدليل الإرشادي مرة واحدة ثم تغلقه. السر هو إبقاء ملف الـ Guidelines وقائمة معايير التقييم (Rubric) مفتوحة في نافذة أو شاشة أخرى بجوار مهمتك دائماً. في كل خطوة، اسأل نفسك: "أين الدليل على ذلك في الـ Guidelines؟" واستخدم لغة ومصطلحات الدليل نفسها في تبريراتك — هذا يثبت للمراجعين أنك تفهم القواعد.
+          </div>
+        </div>
+      </div>
+
+      <div class="rule-item">
+        <div class="rule-header">
+          <div class="rule-number">04</div>
+          <div class="rule-title">الجودة قبل السرعة (Quality over Speed)</div>
+          <div class="rule-toggle">+</div>
+        </div>
+        <div class="rule-body">
+          <div class="rule-body-inner">
+            الغالبية العظمى من الأشخاص الذين تفرغ لوحاتهم أو يُحظرون هم أشخاص تسرّعوا ولم يقرأوا التعليمات جيداً. خذ وقتك كاملاً — المشاريع تُفضّل الجودة على الكمية. إنهاء 3 مهام بدقة عالية أفضل من إنهاء 10 مهام بشكل سطحي.
+          </div>
+        </div>
+      </div>
+
+      <div class="rule-item">
+        <div class="rule-header">
+          <div class="rule-number">05</div>
+          <div class="rule-title">اعرف متى تنسحب (Skip Wisely)</div>
+          <div class="rule-toggle">+</div>
+        </div>
+        <div class="rule-body">
+          <div class="rule-body-inner">
+            إذا واجهت مهمة شعرت أن التعليمات لا تغطيها بوضوح، أو كانت شديدة التعقيد بالنسبة لك، قم بتخطيها (Skip). التخطي أفضل بكثير من تقديم عمل سيء يضر بتقييمك العام. لكن لا تُكثر من التخطي — وازن بين الانضباط والصدق مع مستواك.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SECTION 8: PROHIBITED ACTIONS
+============================================ -->
+<style>
+.prohibit-intro {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.06), rgba(239, 68, 68, 0.02));
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.prohibit-intro h3 {
+  font-size: 1.4rem;
+  color: var(--danger);
+  margin-bottom: 10px;
+}
+.prohibit-intro p {
+  color: var(--text-secondary);
+  line-height: 1.85;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.prohibit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.prohibit-card {
+  background: var(--bg-surface);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.prohibit-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--danger);
+}
+.prohibit-card:hover {
+  border-color: var(--danger);
+  background: rgba(239, 68, 68, 0.04);
+  transform: translateY(-4px);
+}
+.prohibit-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.prohibit-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--danger-soft);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--danger);
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+.prohibit-card h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.prohibit-card p {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-size: 0.93rem;
+}
+.prohibit-card .note {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: var(--success-soft);
+  border-right: 3px solid var(--success);
+  border-radius: 8px;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+.prohibit-card .note strong { color: var(--success); }
+
+@media (max-width: 800px) {
+  .prohibit-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<section id="prohibited">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">الممنوعات</span>
+      <h2 class="section-title">الخطوط الحمراء — <span class="grad">احفظها جيداً</span></h2>
+      <p class="section-subtitle">
+        هذا القسم هو أهم ما في هذا الملف. كل ممنوع هنا قد يُغلق حسابك بشكل دائم خلال ثوانٍ، دون تدخل بشري ودون فرصة استئناف.
+      </p>
+    </div>
+
+    <div class="prohibit-intro">
+      <h3>خوارزميات Outlier قاسية ولا تسامح</h3>
+      <p>
+        النظام يطرد المتعاقدين بشكل آلي دون مراجعة بشرية. الأرباح المعلقة قد تُحوَّل لك في حالات معينة، لكن الحساب نفسه لا يعود. اقرأ هذا القسم مرتين.
+      </p>
+    </div>
+
+    <div class="prohibit-grid">
+
+      <div class="prohibit-card">
+        <div class="prohibit-header">
+          <div class="prohibit-icon">✕</div>
+          <h4>استخدام VPN أو تغيير الموقع</h4>
+        </div>
+        <p>
+          المنصة ترصد الـ IP بدقة. أي محاولة دخول من IP لا يطابق بياناتك المسجّلة تعني حظراً نهائياً وتجميداً للأرباح، حتى لو كان لغرض الحماية أو السرعة.
+        </p>
+      </div>
+
+      <div class="prohibit-card">
+        <div class="prohibit-header">
+          <div class="prohibit-icon">✕</div>
+          <h4>النسخ واللصق داخل التاسكات</h4>
+        </div>
+        <p>
+          المنصة تراقب "سرعة الحافظة" (Clipboard Velocity) وتسجّل كل ضغطة زر. إذا كتبت إجابتك في ملف خارجي ثم لصقتها ككتلة واحدة، يتم طردك فوراً بتهمة استخدام البوتات. يجب الكتابة يدوياً داخل المنصة.
+        </p>
+      </div>
+
+      <div class="prohibit-card">
+        <div class="prohibit-header">
+          <div class="prohibit-icon">✕</div>
+          <h4>كتابة الجاستفكيشن بالذكاء الاصطناعي</h4>
+        </div>
+        <p>
+          ممنوع توليد أو صياغة الإجابات والتبريرات بواسطة ChatGPT أو Claude أو أي نموذج. النظام يملك Detectors تكشف أسلوب الـ AI بسهولة.
+        </p>
+        <div class="note">
+          <strong>المسموح:</strong> الاستعانة بالـ AI بشكل غير مباشر، مثل تصوير الشاشة بهاتفك خارج جهازك للاستفسار عن معلومة أو فكرة، طالما أن الكتابة النهائية تخرج بأسلوبك أنت.
+        </div>
+      </div>
+
+      <div class="prohibit-card">
+        <div class="prohibit-header">
+          <div class="prohibit-icon">✕</div>
+          <h4>إضافات المتصفح (Extensions)</h4>
+        </div>
+        <p>
+          إضافات تصحيح القواعد مثل Grammarly، أو أي إضافة تعدّل على ما تكتبه، قد يعتبرها النظام "محتوى مولّداً بالذكاء الاصطناعي" ويحظر حسابك. أغلق كل الإضافات قبل بدء أي مهمة.
+        </p>
+      </div>
+
+      <div class="prohibit-card">
+        <div class="prohibit-header">
+          <div class="prohibit-icon">✕</div>
+          <h4>التلاعب بالتايمر</h4>
+        </div>
+        <p>
+          ترك العداد يعمل دون إنجاز حقيقي يُعتبر سرقة للوقت ويؤدي للطرد. أوقف العداد (Pause) فور ابتعادك عن الشاشة، ولا تحاول استغلال النظام بأي شكل.
+        </p>
+      </div>
+
+      <div class="prohibit-card">
+        <div class="prohibit-header">
+          <div class="prohibit-icon">✕</div>
+          <h4>السرعة أو البطء غير الطبيعي</h4>
+        </div>
+        <p>
+          إنهاء المهمة في وقت أقل من المنطقي يثير شكوكاً بعدم التركيز، والبطء غير المبرر يُحسب استهلاكاً للوقت بلا عمل. حافظ على إيقاع طبيعي يعكس مجهوداً حقيقياً.
+        </p>
+      </div>
+
+           <div class="prohibit-card">
+        <div class="prohibit-header">
+          <div class="prohibit-icon">✕</div>
+          <h4>حسابات متعددة (حتى من أجهزة مختلفة)</h4>
+        </div>
+        <p>
+          نظام Persona يربط هويتك ببياناتك البيومترية. أي محاولة لإنشاء حساب ثانٍ تُكتشف فوراً وتُغلق كل الحسابات المرتبطة بنفس الشخص.
+        </p>
+        <div class="note" style="background: var(--warning-soft); border-right-color: var(--warning);">
+          <strong style="color: var(--warning);">تنبيه إضافي:</strong> لا يُفضّل أن يفتح أكثر من شخص حسابات منفصلة من <strong>نفس الشبكة (Wi-Fi)</strong> أو <strong>نفس الموقع الجغرافي</strong>، حتى لو كانوا أشخاصاً مختلفين تماماً وعلى أجهزة مختلفة. النظام يرصد بصمة الشبكة (Network Fingerprint) ويُعلّم الحسابات المرتبطة كحسابات مشبوهة، مما قد يؤدي لإغلاق الجميع.
+        </div>
+      </div>
+
+      <div class="prohibit-card">
+        <div class="prohibit-header">
+          <div class="prohibit-icon">✕</div>
+          <h4>مشاركة محتوى المشاريع</h4>
+        </div>
+        <p>
+          كل المشاريع تخضع لاتفاقية سرّية (NDA). تصوير الشاشة لمشاركتها في جروبات أو سوشيال ميديا يُعدّ خرقاً قانونياً، وليس فقط سبباً للحظر.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SECTION: THE HIDDEN EVALUATION SYSTEM
+     قسم: النظام الخفي للتقييم - EQ Score & Attention Checks
+═══════════════════════════════════════════════════════════════ -->
+<style>
+/* ═══════════════════════════════════════════════════════════
+   HIDDEN EVALUATION SYSTEM - Premium Design
+═══════════════════════════════════════════════════════════ */
+.hidden-system-section {
+  position: relative;
+  padding: 8rem 0;
+  background:
+    radial-gradient(ellipse at top right, rgba(99, 102, 241, 0.08), transparent 50%),
+    radial-gradient(ellipse at bottom left, rgba(6, 182, 212, 0.06), transparent 50%);
+}
+
+.title-accent {
+  background: linear-gradient(135deg, var(--accent), var(--primary-light));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hidden-system-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+  margin-top: 4rem;
+}
+
+@media (max-width: 968px) {
+  .hidden-system-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── Premium Card Base ─── */
+.premium-card {
+  position: relative;
+  background: linear-gradient(145deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(255, 255, 255, 0.02) 100%);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 2.5rem;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.premium-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.premium-card-glow {
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 40%);
+  opacity: 0;
+  transition: opacity 0.5s;
+  pointer-events: none;
+}
+
+.premium-card:hover .premium-card-glow {
+  opacity: 1;
+}
+
+.honeypot-card .premium-card-glow {
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 40%);
+}
+
+/* ─── Card Header ─── */
+.premium-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.premium-icon-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.eq-icon {
+  background: linear-gradient(135deg, #6366F1, #8B5CF6);
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+}
+
+.honeypot-icon {
+  background: linear-gradient(135deg, #F59E0B, #EF4444);
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.4);
+}
+
+.premium-card-meta {
+  flex: 1;
+}
+
+.premium-label {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 0.25rem;
+}
+
+.premium-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.premium-description {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 2rem;
+}
+
+.premium-description strong {
+  color: #fff;
+  font-weight: 700;
+}
+
+/* ─── Stats Row (EQ Card) ─── */
+.premium-stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  margin-bottom: 2rem;
+}
+
+.premium-stat {
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.stat-value {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.stat-good { color: #10B981; }
+.stat-warn { color: #F59E0B; }
+.stat-bad { color: #EF4444; }
+
+.stat-label {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+}
+
+/* ─── Bullets ─── */
+.premium-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.premium-bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.premium-bullet svg {
+  color: #10B981;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.premium-bullet strong {
+  color: #fff;
+}
+
+/* ─── Mechanism (Honeypot Card) ─── */
+.premium-mechanism {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.mechanism-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #06B6D4;
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.mechanism-list {
+  list-style: none;
+  counter-reset: mech-counter;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mechanism-list li {
+  counter-increment: mech-counter;
+  position: relative;
+  padding-right: 2.5rem;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.mechanism-list li::before {
+  content: counter(mech-counter);
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, #06B6D4, #0891B2);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+}
+
+.mechanism-list strong {
+  color: #fff;
+}
+
+/* ─── Red Flags Box ─── */
+.honeypot-redflags {
+  background: linear-gradient(135deg,
+    rgba(239, 68, 68, 0.08),
+    rgba(245, 158, 11, 0.04));
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.redflags-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #EF4444;
+  margin: 0 0 1rem 0;
+}
+
+.redflags-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.redflags-list li {
+  position: relative;
+  padding-right: 1.5rem;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.redflags-list li::before {
+  content: '✕';
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #EF4444;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* ─── Callout Box ─── */
+.premium-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 1.25rem;
+  border-radius: 14px;
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.eq-callout {
+  background: linear-gradient(135deg,
+    rgba(99, 102, 241, 0.12),
+    rgba(139, 92, 246, 0.06));
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.eq-callout svg {
+  color: #8B5CF6;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.honeypot-callout {
+  background: linear-gradient(135deg,
+    rgba(245, 158, 11, 0.12),
+    rgba(239, 68, 68, 0.06));
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.honeypot-callout svg {
+  color: #F59E0B;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.premium-callout p {
+  margin: 0;
+}
+
+.premium-callout strong {
+  color: #fff;
+  font-weight: 700;
+}
+
+/* ─── Connection Bar ─── */
+.system-connection {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  padding: 0 1rem;
+}
+
+.connection-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(99, 102, 241, 0.4),
+    rgba(245, 158, 11, 0.4),
+    transparent);
+}
+
+.connection-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+}
+
+.connection-badge svg {
+  color: #06B6D4;
+}
+
+.hidden-system-section .section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+</style>
+
+<section class="section hidden-system-section" id="hidden-system">
+  <div class="container">
+
+    <!-- Section Header -->
+    <div class="section-header">
+      <div class="section-tag">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+        <span>BEHIND THE SCENES</span>
+      </div>
+      <h2 class="section-title">
+        النظام الخفي اللي بيراقبك
+        <span class="title-accent">في كل تاسك</span>
+      </h2>
+      <p class="section-subtitle">
+        Outlier مش بس بيدّيك تاسكات وبس. في نظام كامل بيقيّم كل كلمة بتكتبها، وبيحط ليك "فخاخ" مقصودة عشان يتأكد إنك مش بتغش. لو فهمت النظام ده، هتحافظ على حسابك. لو تجاهلته، الطرد مسألة وقت.
+      </p>
+    </div>
+
+    <!-- Premium Dual Card Layout -->
+    <div class="hidden-system-grid">
+
+      <!-- ─── CARD 1: EQ SCORE ─── -->
+      <article class="premium-card eq-card">
+        <div class="premium-card-glow"></div>
+
+        <div class="premium-card-header">
+          <div class="premium-icon-wrap eq-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 3v18h18"/>
+              <path d="M7 16l4-8 4 4 6-10"/>
+            </svg>
+          </div>
+          <div class="premium-card-meta">
+            <span class="premium-label">METRIC #1</span>
+            <h3 class="premium-title">Quality Score / EQ</h3>
+          </div>
+        </div>
+
+        <p class="premium-description">
+          كل تاسك بتسلّمه، بيتعمل له <strong>Review</strong> من Reviewer سيني (Senior Expert) أو AI Model. ودي بتطلّع لك رقم اسمه <strong>Expert Quality Score (EQ)</strong>، بيبدأ من 1 لـ 5.
+        </p>
+
+        <div class="premium-stat-row">
+          <div class="premium-stat">
+            <div class="stat-value stat-good">4.0+</div>
+            <div class="stat-label">آمن وممتاز</div>
+          </div>
+          <div class="premium-stat">
+            <div class="stat-value stat-warn">3.0-3.9</div>
+            <div class="stat-label">منطقة خطر</div>
+          </div>
+          <div class="premium-stat">
+            <div class="stat-value stat-bad">&lt; 3.0</div>
+            <div class="stat-label">طرد محتمل</div>
+          </div>
+        </div>
+
+        <div class="premium-bullets">
+          <div class="premium-bullet">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            <span>الـ EQ <strong>مخفي عنك</strong> - مش هتشوفه في أي مكان في الموقع</span>
+          </div>
+          <div class="premium-bullet">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            <span>بيتحسب على آخر <strong>5 إلى 10 تاسكات</strong> (Rolling Average)</span>
+          </div>
+          <div class="premium-bullet">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            <span>لو نزل تحت الـ Threshold = <strong>Queue فاضي</strong> أو <strong>Deactivation</strong></span>
+          </div>
+          <div class="premium-bullet">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            <span>السرعة <strong>مش</strong> العامل الأساسي - الجودة هي اللي بتحدد</span>
+          </div>
+        </div>
+
+        <div class="premium-callout eq-callout">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="16" x2="12" y2="12"/>
+            <line x1="12" y1="8" x2="12.01" y2="8"/>
+          </svg>
+          <p>
+            <strong>القاعدة الذهبية:</strong> تاسك واحد ممتاز أحسن من 10 تاسكات متوسطين. الـ Reviewer ممكن يخصم نص نقطة بسبب نقص في الـ Justification، فاهتم بالتفاصيل.
+          </p>
+        </div>
+      </article>
+
+      <!-- ─── CARD 2: ATTENTION CHECKS ─── -->
+      <article class="premium-card honeypot-card">
+        <div class="premium-card-glow"></div>
+
+        <div class="premium-card-header">
+          <div class="premium-icon-wrap honeypot-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+          </div>
+          <div class="premium-card-meta">
+            <span class="premium-label">METRIC #2</span>
+            <h3 class="premium-title">Attention Checks / Honeypots</h3>
+          </div>
+        </div>
+
+        <p class="premium-description">
+          من وقت لتاني، Outlier بيدخّل في طابور التاسكات بتاعك <strong>"تاسك ملغّم"</strong>. ده تاسك اتعمله Review قبل كده، والإجابة الصح متعروفة مسبقاً. هدفه الوحيد: يكشف لو أنت <strong>بتقرا فعلاً</strong> ولا بتسلّم على عمياني.
+        </p>
+
+        <!-- How it works -->
+        <div class="premium-mechanism">
+          <h4 class="mechanism-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M12 1v6m0 6v6"/>
+              <path d="M4.22 4.22l4.24 4.24m6.36 6.36l4.24 4.24"/>
+            </svg>
+            إزاي بيشتغل؟
+          </h4>
+          <ol class="mechanism-list">
+            <li>التاسك بيبان قدامك زي أي تاسك عادي - <strong>مفيش علامة بتفرّقه</strong></li>
+            <li>الإجابة الصح متخزّنة في قاعدة بياناتهم مسبقاً</li>
+            <li>بعد ما تسلّم، النظام بيقارن إجابتك بالإجابة المتوقعة</li>
+            <li>لو ردّك <strong>مطابق</strong> → ✓ نقطة إيجابية</li>
+            <li>لو ردّك <strong>مهمل أو غلط واضح</strong> → ✗ Flag على حسابك</li>
+          </ol>
+        </div>
+
+        <!-- Red flags box -->
+        <div class="honeypot-redflags">
+          <h4 class="redflags-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+              <line x1="12" y1="9" x2="12" y2="13"/>
+              <line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+            علامات بتكشفك فوراً:
+          </h4>
+          <ul class="redflags-list">
+            <li>كتابة "Good" أو "Bad" من غير تبرير</li>
+            <li>تقييم Response واضح إنه غلط بـ "Excellent"</li>
+            <li>تسليم تاسك في وقت قياسي مستحيل (30 ثانية لمهمة طويلة)</li>
+            <li>تكرار نفس الـ Justification في كل التاسكات</li>
+            <li>تجاهل تعليمات صريحة في الـ Prompt</li>
+          </ul>
+        </div>
+
+        <div class="premium-callout honeypot-callout">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+          </svg>
+          <p>
+            <strong>اعتبر إن كل تاسك هو Honeypot.</strong> ده الـ Mindset الوحيد اللي هيخلّيك تشتغل بضمير دايماً. لما تيجي تكسل، افتكر إن التاسك ده ممكن يكون اللي بيحدد مصير حسابك.
+          </p>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Connection bar between cards -->
+    <div class="system-connection">
+      <div class="connection-line"></div>
+      <div class="connection-badge">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/>
+          <path d="M12 8v8M8 12h8"/>
+        </svg>
+        <span>الاتنين بيشتغلوا مع بعض في نفس الوقت - مفيش مفر</span>
+      </div>
+      <div class="connection-line"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================
+     SECTION 9: PLAYGROUND & MISSIONS
+============================================ -->
+<style>
+.dual-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+.feature-card {
+  background: linear-gradient(145deg, var(--bg-surface), var(--bg-elevated));
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+}
+.feature-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-4px);
+}
+.feature-card-tag {
+  display: inline-block;
+  padding: 5px 14px;
+  background: var(--bg-glass-strong);
+  border: 1px solid var(--border-strong);
+  color: var(--accent-light);
+  font-family: var(--font-latin);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border-radius: 100px;
+  margin-bottom: 18px;
+}
+.feature-card h3 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+.feature-card > p {
+  color: var(--text-secondary);
+  line-height: 1.9;
+  margin-bottom: 20px;
+  font-size: 0.96rem;
+}
+.feature-points {
+  list-style: none;
+  padding: 0;
+}
+.feature-points li {
+  padding: 12px 0;
+  padding-right: 32px;
+  position: relative;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  border-bottom: 1px dashed var(--border-subtle);
+}
+.feature-points li:last-child { border-bottom: none; }
+.feature-points li::before {
+  content: '◆';
+  position: absolute;
+  right: 0;
+  top: 11px;
+  color: var(--accent);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 800px) { .dual-grid { grid-template-columns: 1fr; } }
+</style>
+
+<section id="playground">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">أدوات متقدمة</span>
+      <h2 class="section-title">Playground و <span class="grad">Missions</span></h2>
+      <p class="section-subtitle">
+        أداتان كثيرون يجهلونهما، رغم أن استخدامهما الصحيح هو ما يفرق بين متعاقد عادي ومتعاقد محترف يضاعف دخله.
+      </p>
+    </div>
+
+    <div class="dual-grid">
+
+      <div class="feature-card">
+        <span class="feature-card-tag">PLAYGROUND</span>
+        <h3>ساحة التجارب — السلاح السرّي</h3>
+        <p>
+          Outlier تمنحك وصولاً مجانياً إلى "Playground"، وهو مختبر ذكاء اصطناعي يوفّر لك اشتراكات مجانية في أقوى النماذج المدفوعة عالمياً.
+        </p>
+        <ul class="feature-points">
+          <li>أدخل نفس الموجّه على عدة نماذج لتفهم كيف يفكّر كلّ منها.</li>
+          <li>طوّر مهارة كتابة الموجّهات (Prompt Engineering) بشكل مجاني.</li>
+          <li>المنصة تستخدم نظام "Brilliance" الذي يتتبّع تفاعلك ويبني لك تقييماً يعكس براعتك.</li>
+          <li>الدخول اليومي وحلّ التحديات يُبقي حسابك "Active" ويزيد فرص دعوتك لمشاريع جديدة.</li>
+        </ul>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-card-tag">MISSIONS</span>
+        <h3>المهمات — مضاعفة دخلك</h3>
+        <p>
+          نظام مكافآت وحوافز مالية إضافية تُضاف فوق أجرك الأساسي. تُطرح بشكل تحديات محدّدة الزمن والشروط.
+        </p>
+        <ul class="feature-points">
+          <li>مثال: إنجاز 14 مهمة + العمل 4 ساعات خلال يومين.</li>
+          <li>إتمام الشروط يمنحك مكافأة فورية فوق الأجر.</li>
+          <li>المكافآت تتراوح بين 10$ وقد تصل لـ 500$+ في المشاريع عالية الأولوية.</li>
+          <li>تحذير: لا تتسرّع لإنجاز العدد فقط — الجودة شرط الحصول على المكافأة.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SECTION 10: COMMUNITY, QM, SUPPORT
+============================================ -->
+<style>
+.triple-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.role-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.role-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+.role-icon-wrap {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-family: var(--font-latin);
+  font-weight: 800;
+  color: white;
+  font-size: 1.4rem;
+}
+.role-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+}
+.role-card p {
+  color: var(--text-secondary);
+  line-height: 1.85;
+  font-size: 0.93rem;
+  margin-bottom: 14px;
+}
+.role-card ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 14px;
+}
+.role-card ul li {
+  padding: 8px 0;
+  padding-right: 22px;
+  position: relative;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+.role-card ul li::before {
+  content: '→';
+  position: absolute;
+  right: 0;
+  top: 8px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.support-flow {
+  margin-top: 50px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.06), rgba(99, 102, 241, 0.04));
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  border-radius: var(--radius-xl);
+  padding: 40px;
+}
+.support-flow h3 {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.support-flow .sub {
+  text-align: center;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+}
+.flow-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  position: relative;
+}
+.flow-step {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 22px 20px;
+  text-align: center;
+  position: relative;
+  transition: var(--transition);
+}
+.flow-step:hover {
+  border-color: var(--info);
+  transform: translateY(-4px);
+}
+.flow-step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--info);
+  color: white;
+  border-radius: 50%;
+  font-family: var(--font-latin);
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+.flow-step h5 {
+  font-size: 0.98rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+.flow-step p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.flow-step .keyword {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 4px 10px;
+  background: var(--bg-elevated);
+  border-radius: 6px;
+  font-family: var(--font-latin);
+  font-size: 0.78rem;
+  color: var(--accent-light);
+  direction: ltr;
+}
+
+@media (max-width: 900px) {
+  .triple-grid { grid-template-columns: 1fr; }
+  .flow-steps { grid-template-columns: repeat(2, 1fr); }
+  .support-flow { padding: 28px 22px; }
+}
+@media (max-width: 500px) {
+  .flow-steps { grid-template-columns: 1fr; }
+}
+</style>
+
+<section id="community">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">الكوميونيتي والدعم</span>
+      <h2 class="section-title">من حولك في رحلتك — <span class="grad">القنوات والأشخاص</span></h2>
+      <p class="section-subtitle">
+        النجاح في Outlier ليس عملاً فردياً. هناك ثلاث جهات يجب أن تعرف دور كل منها وكيف تتعامل معها بشكل صحيح.
+      </p>
+    </div>
+
+    <div class="triple-grid">
+
+      <div class="role-card">
+        <div class="role-icon-wrap">C</div>
+        <h3>الكوميونيتي العامة</h3>
+        <p>
+          مجتمع المتعاقدين على Discord و Reddit وقنوات Discourse. هؤلاء هم زملاؤك في المهنة، ومنهم تتعلم وتتطور أسرع.
+        </p>
+        <ul>
+          <li>تعرف المشاكل وحلولها بسرعة</li>
+          <li>تكتشف المشاريع الجديدة أولاً بأول</li>
+          <li>تستفيد من تجارب الآخرين قبل أن تقع في أخطائهم</li>
+          <li>تبني علاقات مهنية تخدمك على المدى البعيد</li>
+        </ul>
+      </div>
+
+      <div class="role-card">
+        <div class="role-icon-wrap">P</div>
+        <h3>كوميونيتي المشروع</h3>
+        <p>
+          كل مشروع له قناة أو مجموعة خاصة به. هذه القناة ليست رفاهية — هي مصدرك الرئيسي لتحديثات الـ Guidelines والإعلانات الحاسمة.
+        </p>
+        <ul>
+          <li>إعلانات وتحديثات من فريق المشروع</li>
+          <li>تعديلات الـ Guidelines أولاً بأول</li>
+          <li>إجابات على أسئلة المهام الغامضة</li>
+          <li>متابعتها يومياً واجب وليست خياراً</li>
+        </ul>
+      </div>
+
+      <div class="role-card">
+        <div class="role-icon-wrap">QM</div>
+        <h3>Quality Manager</h3>
+        <p>
+          الـ QM هو الشخص المسؤول عن جودة الشغل داخل المشروع. هو من يراجع عملك ويعطيك ملاحظات تطوير، وإلى من تلجأ في مشاكل المشروع.
+        </p>
+        <ul>
+          <li>يراجع جودة عملك ويقدم Feedback</li>
+          <li>تتواصل معه عبر منتدى المشروع</li>
+          <li>كن مختصراً ومحترماً في رسائلك</li>
+          <li>ملاحظاته فرصة للتحسين لا للجدال</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="support-flow">
+      <h3>كيف تتواصل مع الـ Support بشكل صحيح؟</h3>
+      <p class="sub">الطريقة الخاطئة تُضيع وقتك. الطريقة الصحيحة تأخذ ثوانٍ.</p>
+
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-step-num">1</div>
+          <h5>افتح صفحة الدعم</h5>
+          <p>ادخل إلى صفحة Support من حسابك في Outlier.</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num">2</div>
+          <h5>تحدّث مع البوت</h5>
+          <p>الردّ الأول دائماً من بوت اسمه Julie. لا ترسل له رسائل طويلة.</p>
+          <span class="keyword">Julie Bot</span>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num">3</div>
+          <h5>اطلب فتح تيكت</h5>
+          <p>اكتب للبوت رسالة واضحة وقصيرة:</p>
+          <span class="keyword">I want to open a ticket with support</span>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num">4</div>
+          <h5>تابع منتدى Discourse</h5>
+          <p>بعد 5-7 أيام عمل، أرسل رسالة مختصرة في Discourse للـ QM فيها: Outlier ID، إيميلك، رقم التذكرة، وسطران عن المشكلة.</p>
+        </div>
+      </div>
+
+      <div class="alert alert-info" style="margin-top: 30px;">
+        <div class="alert-icon">i</div>
+        <div class="alert-body">
+          <div class="alert-title">لا ترسل رسائل طويلة وعاطفية</div>
+          <div class="alert-text">البوت لن يفهمها وفريق الدعم سيتأخر في الرد. الاختصار والوضوح هما مفتاح الحصول على رد سريع ومفيد.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SECTION 11: PAYMENT / AIRTM
+============================================ -->
+<style>
+.payment-hero {
+  background: linear-gradient(135deg, var(--bg-surface), var(--bg-elevated));
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 50px;
+  margin-bottom: 40px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.payment-hero-content h3 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+  line-height: 1.35;
+}
+.payment-hero-content p {
+  color: var(--text-secondary);
+  line-height: 1.9;
+  margin-bottom: 16px;
+}
+.payment-hero-content .tag {
+  display: inline-block;
+  padding: 6px 16px;
+  background: var(--success-soft);
+  color: var(--success);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  border-radius: 100px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.airtm-visual {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(6, 182, 212, 0.08));
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  text-align: center;
+}
+.airtm-logo {
+  font-family: var(--font-latin);
+  font-size: 2.6rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--success), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+  letter-spacing: -1px;
+}
+.airtm-sub {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 22px;
+}
+.airtm-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.airtm-badge {
+  padding: 10px 16px;
+  background: var(--bg-glass-strong);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+.airtm-badge strong { color: var(--success); }
+
+.compare-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+}
+.compare-table th {
+  background: var(--bg-elevated);
+  padding: 16px 20px;
+  text-align: right;
+  font-weight: 700;
+  color: var(--accent-light);
+  font-size: 0.9rem;
+}
+.compare-table td {
+  padding: 16px 20px;
+  border-top: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 0.93rem;
+}
+.compare-table td:first-child {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.yes { color: var(--success); font-weight: 700; }
+.no { color: var(--danger); font-weight: 700; }
+.maybe { color: var(--warning); font-weight: 700; }
+
+@media (max-width: 800px) {
+  .payment-hero { grid-template-columns: 1fr; padding: 32px; }
+  .compare-table { font-size: 0.85rem; }
+  .compare-table th, .compare-table td { padding: 12px 14px; }
+}
+</style>
+
+<section id="payment">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">سحب الأرباح</span>
+      <h2 class="section-title">من حسابك في Outlier <span class="grad">إلى يدك</span></h2>
+      <p class="section-subtitle">
+        Outlier تدفع أسبوعياً، يوم الثلاثاء أو الأربعاء. لكن السؤال الأهم: كيف تسحب الفلوس وأنت في مصر؟
+      </p>
+    </div>
+
+    <div class="payment-hero">
+      <div class="payment-hero-content">
+        <span class="tag">التوصية الأولى</span>
+        <h3>استخدم Airtm — الخيار الأمثل لمصر</h3>
+        <p>
+          من بين كل وسائل السحب المتاحة على Outlier، تُعدّ Airtm الخيار الأنسب والأكثر استقراراً للمستخدمين في مصر. سرعة التحويل أفضل، الرسوم أقل، والتحويل إلى الجنيه المصري أسهل.
+        </p>
+        <p>
+          PayPal يعمل في حالات معينة لكنه يواجه قيوداً متكررة على الحسابات المصرية. Wise متاح لكنه يتطلب إعدادات إضافية. Airtm يظل الحل الأبسط للمبتدئ والمحترف.
+        </p>
+        <div class="alert alert-success" style="margin-top: 8px;">
+          <div class="alert-icon">✓</div>
+          <div class="alert-body">
+            <div class="alert-title">معلومة مهمة عن الأرباح المعلّقة</div>
+            <div class="alert-text">إذا تم تعليق حسابك أو حظره لاحقاً، الأرباح المعلّقة (Pending Earnings) التي جمعتها مسبقاً ستُحوَّل لك كالمعتاد ولن تضيع عليك في أغلب الحالات.</div>
+          </div>
+        </div>
+      </div>
+
+            <div class="airtm-visual">
+        <div class="airtm-logo">Airtm</div>
+        <div class="airtm-sub">المحفظة الإلكترونية الأنسب لمصر</div>
+        <div class="airtm-badges">
+          <div class="airtm-badge"><strong>موعد الدفع:</strong> كل أربعاء صباحاً</div>
+          <div class="airtm-badge"><strong>السحب:</strong> مباشر إلى فودافون كاش</div>
+          <div class="airtm-badge"><strong>الرسوم:</strong> منخفضة نسبياً</div>
+          <div class="airtm-badge"><strong>التحويل:</strong> دولار → جنيه بسهولة</div>
+          <div class="airtm-badge"><strong>الاستقرار:</strong> مدعومة رسمياً في Outlier</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="text-align: center; font-size: 1.3rem; margin-bottom: 20px; color: var(--accent-light);">مقارنة سريعة بين وسائل السحب</h3>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>المعيار</th>
+          <th>Airtm</th>
+          <th>PayPal</th>
+          <th>Wise</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>متاحة في مصر</td>
+          <td class="yes">نعم</td>
+          <td class="maybe">بقيود</td>
+          <td class="yes">نعم</td>
+        </tr>
+        <tr>
+          <td>سهولة التحويل للجنيه</td>
+          <td class="yes">سهلة جداً</td>
+          <td class="maybe">متوسطة</td>
+          <td class="maybe">تتطلب حساب بنكي</td>
+        </tr>
+        <tr>
+          <td>الرسوم</td>
+          <td class="yes">منخفضة</td>
+          <td class="no">مرتفعة</td>
+          <td class="yes">منخفضة</td>
+        </tr>
+        <tr>
+          <td>سرعة الاستلام</td>
+          <td class="yes">ساعات</td>
+          <td class="yes">فورية</td>
+          <td class="maybe">1-2 يوم</td>
+        </tr>
+        <tr>
+          <td>الاستقرار للمستخدم المصري</td>
+          <td class="yes">عالٍ</td>
+          <td class="no">منخفض</td>
+          <td class="maybe">متوسط</td>
+        </tr>
+        <tr>
+          <td>التوصية النهائية</td>
+          <td class="yes">الخيار الأول</td>
+          <td class="maybe">احتياطي</td>
+          <td class="maybe">بديل ممكن</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+    <div style="margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 22px;">
+
+      <div class="role-card" style="border-color: rgba(16, 185, 129, 0.3);">
+        <div class="role-icon-wrap" style="background: linear-gradient(135deg, var(--success), var(--accent));">W</div>
+        <h3>متى تصل الفلوس؟</h3>
+        <p>
+          أرباحك الأسبوعية تصل إلى حساب <strong style="color: var(--success);">Airtm</strong> كل <strong style="color: var(--success);">يوم أربعاء صباحاً</strong> بشكل منتظم. عندما تتأخر، غالباً يكون السبب عطلة رسمية أو مراجعة على حسابك، وليس انقطاعاً دائماً.
+        </p>
+        <ul>
+          <li>الدفع يعكس الأسبوع السابق من العمل</li>
+          <li>يصل بشكل تلقائي دون الحاجة لطلب يدوي</li>
+          <li>تأكد من ربط حساب Airtm بحسابك في Outlier بشكل صحيح</li>
+        </ul>
+      </div>
+
+      <div class="role-card" style="border-color: rgba(245, 158, 11, 0.3);">
+        <div class="role-icon-wrap" style="background: linear-gradient(135deg, var(--gold), var(--gold-light));">VC</div>
+        <h3>السحب إلى فودافون كاش</h3>
+        <p>
+          من أهم مميزات Airtm للمستخدم المصري: إمكانية <strong style="color: var(--gold-light);">السحب المباشر إلى محفظة فودافون كاش</strong>. لا تحتاج حساباً بنكياً ولا إجراءات معقدة.
+        </p>
+        <ul>
+          <li>تختار خيار التحويل لفودافون كاش من Airtm</li>
+          <li>تُحدّد المبلغ وتتلقى الفلوس على رقمك مباشرة</li>
+          <li>اتساعر التحويل تختلف قليلاً حسب السوق</li>
+          <li>الحل الأبسط لمن لا يملك حساباً بنكياً</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="alert alert-info" style="margin-top: 30px;">
+      <div class="alert-icon">i</div>
+      <div class="alert-body">
+        <div class="alert-title">نصيحة عملية</div>
+        <div class="alert-text">
+          قبل أن تنتظر أول مبلغ، تأكد من إنشاء حساب Airtm وتفعيله بالكامل (التحقق من الهوية) مبكراً. الكثير من المتعاقدين الجدد يكتشفون أن حسابهم في Airtm غير مفعّل بعد وصول أول دفعة، فيتأخر استلامهم.
+        </div>
+      </div>
+    </div>
+</section>
+
+<!-- ============================================
+     SECTION 12: FAQ
+============================================ -->
+<style>
+.faq-list { max-width: 880px; margin: 0 auto; }
+.faq-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  margin-bottom: 14px;
+  overflow: hidden;
+  transition: var(--transition);
+}
+.faq-item.open { border-color: var(--primary); }
+.faq-header {
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  user-select: none;
+  transition: var(--transition);
+}
+.faq-header:hover { background: var(--bg-glass); }
+.faq-q {
+  flex: 1;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.faq-toggle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--bg-elevated);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  transition: var(--transition);
+}
+.faq-item.open .faq-toggle {
+  transform: rotate(45deg);
+  background: var(--primary);
+  color: white;
+}
+.faq-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.faq-body-inner {
+  padding: 0 24px 22px 24px;
+  color: var(--text-secondary);
+  line-height: 1.9;
+  font-size: 0.94rem;
+}
+.faq-item.open .faq-body { max-height: 600px; }
+</style>
+
+<section id="faq">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">أسئلة شائعة</span>
+      <h2 class="section-title">الأسئلة التي <span class="grad">تتكرّر دائماً</span></h2>
+      <p class="section-subtitle">إجابات سريعة عن المخاوف الأكثر شيوعاً قبل وبعد التسجيل.</p>
+    </div>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-header">
+          <div class="faq-q">هل التسجيل من مصر مسموح به رسمياً؟</div>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-body">
+          <div class="faq-body-inner">
+            مصر ليست ضمن قائمة الدول المسموح بها للتسجيل المباشر. الطريقة المتاحة هي التسجيل عبر رابط إحالة (Referral Link) من شخص مسجَّل بالفعل. هذا هو السبيل الوحيد الذي يضمن لك حساباً سليماً وآمناً، ومن هنا تأتي أهمية الرابط الموجود في نهاية هذا الدليل.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-header">
+          <div class="faq-q">سجّلت ولكن لوحة التحكم فارغة، هل رسبت؟</div>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-body">
+          <div class="faq-body-inner">
+            لا. لوحة التحكم الفارغة بعد التسجيل أمر طبيعي تماماً. أنت في "طابور الانتظار" والمنصة سترسل لك مشاريع عندما تتوفر مهام تطابق مهاراتك. بعض المستخدمين ينتظرون من أسبوع إلى أربعة أسابيع قبل أول مشروع. سجّل دخولك يومياً وراقب بريدك الإلكتروني فقط.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-header">
+          <div class="faq-q">هل يمكنني استخدام ChatGPT في كتابة إجاباتي؟</div>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-body">
+          <div class="faq-body-inner">
+            ممنوع منعاً باتاً نسخ كتابة الـ AI داخل المنصة. لكن مسموح أن تستعين به بشكل غير مباشر، مثل تصوير الشاشة بهاتفك خارج جهازك لتسأل عن فكرة أو معلومة، ثم تكتب الإجابة النهائية بأسلوبك أنت داخل المنصة. النظام يكشف أسلوب الـ AI بسهولة وبدقة.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-header">
+          <div class="faq-q">هل Grammarly مسموح به؟</div>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-body">
+          <div class="faq-body-inner">
+            لا. النظام يعتبر Grammarly وأي إضافة مماثلة تعدّل على ما تكتبه نوعاً من "المحتوى المولّد آلياً" وقد يؤدي ذلك لحظر الحساب. أغلق كل الإضافات قبل بدء أي مهمة، وادخل المنصة في وضع نظيف تماماً.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-header">
+          <div class="faq-q">ماذا لو حُظر حسابي؟ هل أخسر أرباحي؟</div>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-body">
+          <div class="faq-body-inner">
+            الميزة الأهم في Outlier أن الأرباح المعلّقة (Pending Earnings) التي جمعتها قبل الحظر تُحوَّل لك كالمعتاد في أغلب الحالات. لكن الحساب نفسه لا يعود غالباً، لأن خوارزميات الطرد آلية ولا تخضع لمراجعة بشرية.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-header">
+          <div class="faq-q">كم الوقت المناسب لإنهاء المهمة؟</div>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-body">
+          <div class="faq-body-inner">
+            لا يوجد رقم ثابت — الوقت يختلف حسب نوع المهمة وتعقيدها. القاعدة العامة: لا تكن أسرع ولا أبطأ من المعدل الطبيعي بشكل ملحوظ. كلاهما يثير شكوكاً، إما بعدم التركيز أو باستهلاك الوقت بلا عمل. اجعل إيقاعك طبيعياً يعكس مجهوداً حقيقياً.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-header">
+          <div class="faq-q">هل يمكنني العمل على هاتفي؟</div>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-body">
+          <div class="faq-body-inner">
+            من الناحية التقنية ممكن، لكن من الناحية العملية غير مستحسن. شاشة الكمبيوتر تتيح لك إبقاء الـ Guidelines مفتوحة بجوار التاسك (قاعدة الشاشة المزدوجة)، والكتابة أسرع وأدق. استخدم الكمبيوتر لجلسات العمل، ودع الهاتف للتحقق السريع من لوحة التحكم.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-header">
+          <div class="faq-q">هل يجب أن أعمل ساعات محددة يومياً؟</div>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-body">
+          <div class="faq-body-inner">
+            لا يوجد التزام بساعات ثابتة، أنت متعاقد حر. لكن الاستمرارية تفرق: الحسابات النشطة يومياً تحصل على مشاريع أكثر. ادخل يومياً ولو لدقائق، حتى لو لمجرد التحقق من لوحة التحكم أو الـ Playground.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-header">
+          <div class="faq-q">هل أستلم الفلوس على فودافون كاش مباشرة؟</div>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-body">
+          <div class="faq-body-inner">
+            ليس مباشرة من Outlier. الفلوس تصل أولاً إلى حساب Airtm كل أربعاء صباحاً، ومن Airtm يمكنك سحبها إلى فودافون كاش بسهولة. هذه أسهل طريقة للمصريين خاصة لمن لا يملكون حساباً بنكياً.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-header">
+          <div class="faq-q">هل يمكنني فتح حسابين بأسماء مختلفة من نفس البيت؟</div>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-body">
+          <div class="faq-body-inner">
+            غير مُستحسن. حتى لو كنتما شخصين مختلفين تماماً وعلى أجهزة مختلفة، النظام يرصد بصمة الشبكة (نفس الـ Wi-Fi، نفس الموقع الجغرافي) ويُعلّم الحسابات كحسابات مشبوهة. النتيجة قد تكون إغلاق كلا الحسابين. لو لا بد، يجب فصل الشبكات تماماً.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SECTION 13: CONSCIENCE / RELIGIOUS NOTE
+============================================ -->
+<style>
+.conscience {
+  background: linear-gradient(135deg, #0f1320 0%, #1a1f35 100%);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: var(--radius-xl);
+  padding: 60px 50px;
+  margin: 30px 0;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.conscience::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(245, 158, 11, 0.08), transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(245, 158, 11, 0.05), transparent 50%);
+  pointer-events: none;
+}
+.conscience::after {
+  content: '';
+  position: absolute;
+  top: 20px; right: 20px; bottom: 20px; left: 20px;
+  border: 1px solid rgba(245, 158, 11, 0.15);
+  border-radius: calc(var(--radius-xl) - 8px);
+  pointer-events: none;
+}
+.conscience-content { position: relative; z-index: 1; }
+.conscience-label {
+  display: inline-block;
+  padding: 8px 22px;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  color: var(--gold-light);
+  border-radius: 100px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 26px;
+}
+.conscience h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+  line-height: 1.45;
+}
+.conscience p {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 2;
+  max-width: 720px;
+  margin: 0 auto 20px;
+}
+.conscience .strong {
+  color: var(--gold-light);
+  font-weight: 700;
+}
+.ayah-box {
+  margin: 40px auto;
+  max-width: 720px;
+  background: rgba(245, 158, 11, 0.05);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 36px 30px;
+  position: relative;
+}
+.ayah-frame {
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  border-radius: calc(var(--radius-lg) - 4px);
+  pointer-events: none;
+}
+.ayah-text {
+  font-family: var(--font-quran);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  line-height: 2;
+  color: var(--gold-light);
+  margin-bottom: 16px;
+  position: relative;
+}
+.ayah-source {
+  font-family: var(--font-arabic);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.conscience-closing {
+  margin-top: 30px;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+@media (max-width: 700px) {
+  .conscience { padding: 40px 26px; }
+  .ayah-box { padding: 28px 20px; }
+}
+</style>
+
+<section id="conscience">
+  <div class="container">
+    <div class="conscience">
+      <div class="conscience-content">
+        <span class="conscience-label">وقفة ضمير</span>
+        <h3>قبل أن تبدأ — تذكير من القلب</h3>
+        <p>
+          هذا العمل أمانة. أي محاولة غش — سواء باستخدام الذكاء الاصطناعي في كتابة إجاباتك، أو VPN، أو التلاعب بالتايمر، أو فتح حسابات وهمية — ليست فقط سبباً في إغلاق حسابك، بل تجعل <span class="strong">المال الذي يدخل بيتك مالاً حراماً</span>.
+        </p>
+        <p>
+          الغشّ في العمل من <span class="strong">كبائر الذنوب</span>، والرزق الحلال أبرك وأبقى من أي مبلغ كبير يأتي بطرق ملتوية. والله سبحانه وتعالى يعلم ما تخفيه عن الخوارزميات وعن البشر.
+        </p>
+
+        <div class="ayah-box">
+          <div class="ayah-frame"></div>
+          <div class="ayah-text">
+            ﴿ يَعْلَمُ خَائِنَةَ الْأَعْيُنِ وَمَا تُخْفِي الصُّدُورُ ﴾
+          </div>
+          <div class="ayah-source">سورة غافر — الآية 19</div>
+        </div>
+
+        <p class="conscience-closing">
+          لا ينال ما عند الله بمعصية الله. ✦
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SECTION 14: CTA / REFERRAL LINK
+============================================ -->
+<style>
+.cta-section {
+  position: relative;
+  overflow: hidden;
+}
+.cta-box {
+  background: linear-gradient(135deg, #1a1f3a, #131836);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-xl);
+  padding: 60px 50px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-box::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -10%;
+  width: 60%;
+  height: 200%;
+  background: radial-gradient(ellipse, rgba(99, 102, 241, 0.2), transparent 60%);
+  pointer-events: none;
+}
+.cta-box::after {
+  content: '';
+  position: absolute;
+  bottom: -50%;
+  right: -10%;
+  width: 60%;
+  height: 200%;
+  background: radial-gradient(ellipse, rgba(6, 182, 212, 0.15), transparent 60%);
+  pointer-events: none;
+}
+.cta-content { position: relative; z-index: 1; }
+.cta-eyebrow {
+  display: inline-block;
+  padding: 6px 18px;
+  background: var(--bg-glass-strong);
+  border: 1px solid var(--border-strong);
+  border-radius: 100px;
+  font-size: 0.82rem;
+  color: var(--accent-light);
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 22px;
+  font-family: var(--font-latin);
+}
+.cta-box h2 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  margin-bottom: 18px;
+  line-height: 1.35;
+}
+.cta-box h2 .grad {
+  background: linear-gradient(135deg, var(--primary-light), var(--accent-light));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.cta-box p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  max-width: 660px;
+  margin: 0 auto 36px;
+  line-height: 1.9;
+}
+.referral-box {
+  max-width: 720px;
+  margin: 0 auto 30px;
+  background: var(--bg-base);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.referral-link {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-family: var(--font-latin);
+  font-size: 0.85rem;
+  padding: 14px 16px;
+  outline: none;
+  direction: ltr;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.copy-btn {
+  padding: 12px 20px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem;
+  transition: var(--transition);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.copy-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4); }
+.copy-btn.copied { background: linear-gradient(135deg, var(--success), #059669); }
+.cta-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.cta-open-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, var(--accent), var(--primary));
+  color: white;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: 0 12px 28px rgba(6, 182, 212, 0.3);
+  transition: var(--transition);
+}
+.cta-open-btn:hover { transform: translateY(-3px); box-shadow: 0 18px 36px rgba(6, 182, 212, 0.45); }
+
+@media (max-width: 600px) {
+  .cta-box { padding: 40px 24px; }
+  .referral-box { flex-direction: column; }
+  .copy-btn { width: 100%; justify-content: center; }
+}
+</style>
+
+<section id="cta" class="cta-section">
+  <div class="container">
+    <div class="cta-box">
+      <div class="cta-content">
+        <span class="cta-eyebrow">START YOUR JOURNEY</span>
+        <h2>جاهز لتبدأ؟<br/><span class="grad">سجّل عبر الرابط الخاص</span></h2>
+        <p>
+          هذا هو الرابط الوحيد الذي يتيح لك التسجيل من مصر بشكل سليم (هو او أي رابط احالة مثله). انسخه واحفظه، أو افتحه مباشرة في متصفحك وابدأ.
+        </p>
+
+        <div class="referral-box">
+          <input type="text" class="referral-link" id="referralLink" value="https://app.outlier.ai/expert/referrals/link/4Ltfmvpmy1PP2LwRBP5o73lju-I" readonly>
+          <button class="copy-btn" id="copyBtn" onclick="copyReferralLink()">
+            <span id="copyText">نسخ الرابط</span>
+          </button>
+        </div>
+
+        <div class="cta-actions">
+          <a href="https://app.outlier.ai/expert/referrals/link/4Ltfmvpmy1PP2LwRBP5o73lju-I" target="_blank" rel="noopener" class="cta-open-btn">
+            افتح الرابط في تبويب جديد
+            <span style="font-family: var(--font-latin);">↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+============================================ -->
+<style>
+.footer {
+  padding: 60px 0 40px;
+  border-top: 1px solid var(--border-subtle);
+  text-align: center;
+  margin-top: 40px;
+}
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+.footer-brand-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-latin);
+  font-weight: 900;
+  color: white;
+}
+.footer p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  max-width: 600px;
+  margin: 0 auto 8px;
+  line-height: 1.8;
+}
+.footer .warn {
+  color: var(--warning);
+  font-weight: 600;
+  margin-top: 14px;
+}
+.back-to-top {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  border: none;
+  color: white;
+  font-size: 1.3rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+  z-index: 998;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { transform: translateY(-4px); }
+</style>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-brand">
+      <span class="footer-brand-icon">O</span>
+      <span>Outlier Guide — Egypt Edition</span>
+    </div>
+    <p>
+      هذا الدليل مجهود شخصي مبني على تجربة وممارسة، وليس بياناً رسمياً من Outlier أو Scale AI.
+    </p>
+    <p>المعلومات الواردة قد تتغير مع تحديثات المنصة، لذا تابع دائماً المصادر الرسمية وقنوات المشاريع.</p>
+    <p class="warn">⚠ ملف خاص — ممنوع نشره أو إعادة توزيعه</p>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="الصعود لأعلى">↑</button>
+
+<!-- ============================================
+     JAVASCRIPT
+============================================ -->
+<script>
+// Reading Progress Bar
+const progressFill = document.getElementById('progressFill');
+const backToTop = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const progress = (scrollTop / scrollHeight) * 100;
+  progressFill.style.width = progress + '%';
+
+  if (scrollTop > 600) backToTop.classList.add('visible');
+  else backToTop.classList.remove('visible');
+});
+
+// Navigation Toggle (Mobile)
+const navToggle = document.getElementById('navToggle');
+const navMenu = document.getElementById('navMenu');
+if (navToggle) {
+  navToggle.addEventListener('click', () => navMenu.classList.toggle('open'));
+}
+document.querySelectorAll('.nav-menu a').forEach(link => {
+  link.addEventListener('click', () => navMenu.classList.remove('open'));
+});
+
+// Accordion: Rules (Guidelines)
+document.querySelectorAll('.rule-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const item = header.parentElement;
+    item.classList.toggle('open');
+  });
+});
+
+// Accordion: FAQ
+document.querySelectorAll('.faq-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const item = header.parentElement;
+    item.classList.toggle('open');
+  });
+});
+
+// Copy Referral Link
+function copyReferralLink() {
+  const linkInput = document.getElementById('referralLink');
+  const btn = document.getElementById('copyBtn');
+  const txt = document.getElementById('copyText');
+
+  linkInput.select();
+  linkInput.setSelectionRange(0, 99999);
+
+  try {
+    navigator.clipboard.writeText(linkInput.value).then(() => {
+      txt.textContent = 'تم النسخ ✓';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        txt.textContent = 'نسخ الرابط';
+        btn.classList.remove('copied');
+      }, 2200);
+    });
+  } catch (e) {
+    document.execCommand('copy');
+    txt.textContent = 'تم النسخ ✓';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      txt.textContent = 'نسخ الرابط';
+      btn.classList.remove('copied');
+    }, 2200);
+  }
+}
+
+// Reveal on scroll (subtle fade-in)
+const revealEls = document.querySelectorAll(
+  '.timeline-step, .task-card, .prohibit-card, .role-card, .eq-tip, .peel-card, .feature-card, .rule-item, .faq-item, .intro-card, .stat-card, .flow-step'
+);
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+revealEls.forEach((el, i) => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(24px)';
+  el.style.transition = `opacity 0.7s ease ${(i % 6) * 0.05}s, transform 0.7s ease ${(i % 6) * 0.05}s`;
+  observer.observe(el);
+});
+
+// Active nav highlight on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-menu a');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const rect = section.getBoundingClientRect();
+    if (rect.top <= 120 && rect.bottom >= 120) {
+      current = section.getAttribute('id');
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.style.color = '';
+    link.style.background = '';
+    const href = link.getAttribute('href').replace('#', '');
+    if (href === current) {
+      link.style.color = 'var(--text-primary)';
+      link.style.background = 'var(--bg-glass-strong)';
+    }
+  });
+});
+</script>
+
+</body>
+</html>
