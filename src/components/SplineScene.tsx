@@ -1,5 +1,5 @@
 import { Component, lazy, Suspense, useEffect, useRef, useState, type ErrorInfo, type ReactNode } from 'react'
-import { LoaderCircle } from 'lucide-react'
+import { Sparkles } from 'lucide-react'
 
 const Spline = lazy(() => import('@splinetool/react-spline'))
 
@@ -36,8 +36,8 @@ class SceneBoundary extends Component<BoundaryProps, BoundaryState> {
 function ScenePlaceholder({ failed = false, reduced = false }: { failed?: boolean; reduced?: boolean }) {
   return (
     <div className="scene-placeholder" role="status">
-      {!failed && !reduced && <LoaderCircle size={22} aria-hidden="true" />}
-      <span>{failed ? 'تعذّر تحميل المشهد الثلاثي' : reduced ? 'المشهد متوقف احترامًا لإعداد تقليل الحركة' : 'جاري تجهيز NEXBOT الحقيقي'}</span>
+      {!failed && !reduced && <Sparkles size={19} aria-hidden="true" />}
+      <span>{failed ? 'تعذّر تحميل المشهد الثلاثي' : reduced ? 'المشهد متوقف احترامًا لإعداد تقليل الحركة' : 'لحظة هادئة… NEXBOT في الطريق'}</span>
     </div>
   )
 }
@@ -45,6 +45,7 @@ function ScenePlaceholder({ failed = false, reduced = false }: { failed?: boolea
 export function SplineScene({ scene, className }: SplineSceneProps) {
   const hostRef = useRef<HTMLDivElement>(null)
   const [inView, setInView] = useState(false)
+  const [sceneReady, setSceneReady] = useState(false)
   const [reducedMotion, setReducedMotion] = useState(false)
 
   useEffect(() => {
@@ -61,7 +62,7 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setInView(true)
+          window.setTimeout(() => setInView(true), 320)
           observer.disconnect()
         }
       },
@@ -75,14 +76,21 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
     <div ref={hostRef} className={className}>
       {reducedMotion ? (
         <ScenePlaceholder reduced />
-      ) : !inView ? (
-        <ScenePlaceholder />
       ) : (
-        <SceneBoundary fallback={<ScenePlaceholder failed />}>
-          <Suspense fallback={<ScenePlaceholder />}>
-            <Spline scene={scene} className="h-full w-full" />
-          </Suspense>
-        </SceneBoundary>
+        <>
+          {inView && (
+            <SceneBoundary fallback={<ScenePlaceholder failed />}>
+              <Suspense fallback={null}>
+                <Spline
+                  scene={scene}
+                  className={`spline-canvas ${sceneReady ? 'spline-canvas--ready' : ''}`}
+                  onLoad={() => window.requestAnimationFrame(() => setSceneReady(true))}
+                />
+              </Suspense>
+            </SceneBoundary>
+          )}
+          {!sceneReady && <ScenePlaceholder />}
+        </>
       )}
     </div>
   )

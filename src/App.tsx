@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import {
   ArrowLeft,
+  ArrowRight,
   ArrowUpLeft,
   BadgeCheck,
   Banknote,
@@ -12,7 +13,6 @@ import {
   ExternalLink,
   Eye,
   FileCheck2,
-  Lightbulb,
   Menu,
   MessageCircleQuestion,
   MousePointer2,
@@ -35,7 +35,7 @@ import {
   fitQuestions,
   peel,
   redLines,
-  registrationSteps,
+  journeyStages,
   signalLabels,
   sources,
   tasks,
@@ -216,43 +216,90 @@ function FitCheck() {
 
 function RegistrationJourney() {
   const [active, setActive] = useState(0)
-  const step = registrationSteps[active]
+  const step = journeyStages[active]
 
   return (
-    <div className="journey-card">
-      <div className="stepper" role="tablist" aria-label="خطوات التسجيل">
-        {registrationSteps.map((item, index) => (
+    <div className="journey-card journey-card--detailed">
+      <div className="journey-facts">
+        <div><span>الرابط الحالي</span><strong><CircleCheck size={17} /> صالح ومربوط بمشروع</strong><small>فُحص 17 يوليو 2026</small></div>
+        <div><span>التأهيل العام</span><strong dir="ltr">30–90 min</strong><small>ثم تأهيل منفصل لكل مشروع</small></div>
+        <div><span>المسار</span><strong>10 محطات متوقعة</strong><small>الشكل والترتيب قد يختلفان</small></div>
+      </div>
+
+      <nav className="flow-stepper" aria-label="مسار التسجيل حتى أول مراجعة جودة">
+        {journeyStages.map((item, index) => (
           <button
             key={item.number}
             type="button"
-            role="tab"
-            aria-selected={active === index}
-            aria-controls="step-panel"
-            className={active === index ? 'stepper-button stepper-button--active' : 'stepper-button'}
+            aria-current={active === index ? 'step' : undefined}
+            aria-controls="journey-stage-panel"
+            className={active === index ? 'flow-step flow-step--active' : 'flow-step'}
             onClick={() => setActive(index)}
           >
-            <span>{item.number}</span>
-            <small>{item.title}</small>
+            <span>{item.number}</span><i aria-hidden="true" />
+            <small>{item.phase}</small>
           </button>
         ))}
-      </div>
-      <div id="step-panel" className="step-panel" role="tabpanel" aria-live="polite">
-        <div className="step-panel__number">{step.number}</div>
-        <div>
-          <span className="step-panel__eyebrow">{step.eyebrow}</span>
-          <h3>{step.title}</h3>
-          <p>{step.description}</p>
-          <ul>
-            {step.bullets.map((bullet) => (
-              <li key={bullet}>
-                <CircleCheck size={17} aria-hidden="true" />
-                {bullet}
-              </li>
-            ))}
-          </ul>
-          {step.note && <div className="step-note"><Lightbulb size={17} aria-hidden="true" />{step.note}</div>}
+      </nav>
+
+      <div key={step.number} id="journey-stage-panel" className="flow-panel" aria-live="polite">
+        <header className="flow-panel__header">
+          <div className="flow-panel__number">{step.number}</div>
+          <div>
+            <div className="flow-panel__meta"><Signal kind={step.signal} /><span>{step.phase}</span></div>
+            <h3>{step.title}</h3>
+            <p>{step.summary}</p>
+          </div>
+        </header>
+
+        <div className="flow-panel__grid">
+          <section className="flow-column">
+            <div className="flow-column__title"><Eye size={19} /><span>ما الذي سيظهر أمامك؟</span></div>
+            <ul>{step.expected.map((item) => <li key={item}>{item}</li>)}</ul>
+          </section>
+          <section className="flow-column flow-column--action">
+            <div className="flow-column__title"><CircleCheck size={19} /><span>اعمل كده</span></div>
+            <ul>{step.actions.map((item) => <li key={item}>{item}</li>)}</ul>
+          </section>
         </div>
+
+        <aside className="rescue-card">
+          <div className="rescue-card__icon"><CircleAlert size={22} /></div>
+          <div>
+            <span>لو وقفت هنا</span>
+            <h4>{step.trouble.title}</h4>
+            <ol>{step.trouble.steps.map((item) => <li key={item}>{item}</li>)}</ol>
+          </div>
+        </aside>
+
+        <footer className="flow-panel__footer">
+          <div className="flow-sources">{step.sources.map((source) => <SourceLink key={source.url} source={source} />)}</div>
+          <div className="flow-navigation">
+            <button type="button" onClick={() => setActive((current) => Math.max(0, current - 1))} disabled={active === 0}><ArrowRight size={16} />السابق</button>
+            <span>{active + 1} / {journeyStages.length}</span>
+            <button type="button" onClick={() => setActive((current) => Math.min(journeyStages.length - 1, current + 1))} disabled={active === journeyStages.length - 1}>التالي<ArrowLeft size={16} /></button>
+          </div>
+        </footer>
       </div>
+
+      <aside className="support-blueprint">
+        <div className="support-blueprint__intro">
+          <MessageCircleQuestion size={25} />
+          <div><span>رسالة دعم تُفهم من أول مرة</span><h3>ابعث تفاصيل قابلة للتشخيص، مش «الحساب مش شغال».</h3></div>
+        </div>
+        <div className="support-blueprint__fields">
+          {[
+            ['01', 'المرحلة واسم الشاشة'],
+            ['02', 'نص الخطأ كما ظهر'],
+            ['03', 'التاريخ والوقت بتوقيت القاهرة'],
+            ['04', 'الجهاز والمتصفح'],
+            ['05', 'Project / Course / Task ID إن وُجد'],
+            ['06', 'ما جرّبته بالفعل'],
+          ].map(([number, label]) => <span key={number}><b>{number}</b>{label}</span>)}
+        </div>
+        <p><ShieldAlert size={17} />لا ترسل كلمة السر، ولا صورة الهوية كاملة، ولا إجابات الـ Assessment أو محتوى المهمة. استخدم قناة Outlier المعتمدة فقط.</p>
+        <SourceLink source={sources.support} />
+      </aside>
     </div>
   )
 }
@@ -273,7 +320,7 @@ function App() {
               <div className="hero-badge">
                 <span className="status-dot" />
                 دليل مستقل للمصريين
-                <span className="hero-badge__date">محدّث 16 يوليو 2026</span>
+                <span className="hero-badge__date">محدّث 17 يوليو 2026</span>
               </div>
               <h1>
                 من أول ضغطة
@@ -284,13 +331,13 @@ function App() {
                 مش هنبيع لك حلم «فلوس سهلة». هنفهمك الشغل، نجهّز ملفك، ونمشي معاك خطوة بخطوة من التسجيل لحد ما تبقى عارف تعمل إيه — وما تعملش إيه.
               </p>
               <div className="hero-cta">
-                <a className="button button--primary" href={REFERRAL_URL} target="_blank" rel="sponsored noopener noreferrer">
-                  ابدأ عبر رابط الإحالة
-                  <ArrowUpLeft size={19} aria-hidden="true" />
-                </a>
-                <a className="button button--ghost" href="#work">
+                <a className="button button--primary" href="#work">
                   افهم الشغل الأول
                   <ArrowLeft size={18} aria-hidden="true" />
+                </a>
+                <a className="button button--ghost" href={REFERRAL_URL} target="_blank" rel="sponsored noopener noreferrer">
+                  ابدأ عبر رابط الإحالة
+                  <ArrowUpLeft size={19} aria-hidden="true" />
                 </a>
               </div>
               <p className="referral-disclosure">
@@ -300,7 +347,7 @@ function App() {
               </p>
               <div className="hero-mini-stats">
                 <div><strong dir="ltr">$7.5–50+</strong><span>نطاق شائع حسب المسار</span></div>
-                <div><strong>4 خطوات</strong><span>من الحساب للتأهيل</span></div>
+                <div><strong>10 محطات</strong><span>من الرابط لأول QA</span></div>
                 <div><strong>أسبوعي</strong><span>المعالجة يوم الثلاثاء</span></div>
               </div>
             </div>
@@ -400,9 +447,9 @@ function App() {
           <div className="shell">
             <Reveal>
               <SectionHeading
-                kicker="رحلة التسجيل"
-                title={<>أربع خطوات.<br /><span>ولا خطوة شكلية.</span></>}
-                description="التأهيل العام يستغرق غالبًا 30–90 دقيقة، وبعده ممكن تدخل تأهيلًا خاصًا بالمشروع. خد كل شاشة بجدية."
+                kicker="من الرابط لأول QA"
+                title={<>عشر محطات.<br /><span>وفي كل محطة خطة نجدة.</span></>}
+                description="هذا هو المسار الأقرب لما ستراه الآن: دعوة الإحالة، الحساب، فحص المهارات والهوية، ثم المشروع والـ Assessment وأول Task والمراجعة. بعض الشاشات تتبدل حسب تخصصك والمشروع، لذلك نوضح الثابت والمتغير بدل ما نوهمك بصورة واحدة."
                 inverted
               />
             </Reveal>
@@ -635,7 +682,7 @@ function App() {
           <p>الدليل مجهود مستقل، وليس موقعًا رسميًا أو بيانًا صادرًا عن Outlier أو Scale AI. الأسعار والمشاريع والسياسات قابلة للتغيير.</p>
           <a href="#top" className="back-top">فوق <ArrowUpLeft size={17} /></a>
         </div>
-        <div className="shell footer-bottom"><span>آخر مراجعة للمعلومات: 16 يوليو 2026</span><span dir="ltr">BUILT FOR EGYPTIAN OUTLIERS · 2026</span></div>
+        <div className="shell footer-bottom"><span>آخر مراجعة للمعلومات: 17 يوليو 2026</span><span dir="ltr">BUILT FOR EGYPTIAN OUTLIERS · 2026</span></div>
       </footer>
     </>
   )
